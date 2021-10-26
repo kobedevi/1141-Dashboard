@@ -1,20 +1,43 @@
+var osc = require("osc");
+const appdata = require("./appData");
 const { app, BrowserWindow } = require("electron");
+const { listener } = require("./api/listener");
+const registerFunctions = require("./api/registerFunctions");
 
+require("dotenv").config();
 require("@electron/remote/main").initialize();
 
 const createWindow = () => {
-  const win = new BrowserWindow({
+  appdata.mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      enableRemoteModule: true,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
-  win.loadURL("http://localhost:3000");
+  appdata.mainWindow.loadURL("http://localhost:3000");
 };
 
 app.whenReady().then(() => {
+  // Declare UDP Port and make globally available
+  appdata.udpPort = new osc.UDPPort({
+    localAddress: process.env.LOCAL_ADDRESS,
+    localPort: process.env.LOCAL_PORT,
+    metadata: true,
+  });
+
+  // Init listener for messages and errors
+  listener();
+
+  // Register the actions
+  registerFunctions();
+
+  // Open the socket.
+  appdata.udpPort.open();
+  console.log("Server running");
+
   createWindow();
 
   app.on("activate", () => {

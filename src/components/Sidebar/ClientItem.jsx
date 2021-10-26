@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const ClientItem = ({ data }) => {
   return (
-    <Link
-      class={`client__item ${data.state === 100 && "solved"}`}
+    <NavLink
+      activeclassName="client__item active"
+      className={`client__item ${data.state === 100 && "solved"}`}
       to={`/${data.name}`}
+      cl
     >
       {data.name}{" "}
       <i
-        class={`bi bi-hexagon-fill ${data.status === 1 ? "green" : "red"}`}
+        className={`bi bi-hexagon-fill ${data.status === 1 ? "green" : "red"}`}
       ></i>
-    </Link>
+    </NavLink>
   );
 };

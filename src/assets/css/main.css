@@ -338,29 +338,31 @@ template {
 }
 
 * {
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
   display: grid;
-  grid-template-columns: 150px auto;
-  background-color: #efefef;
+  grid-template-columns: 170px auto;
+  background-color: #13192b;
 }
 
 .green {
-  color: #17cd17;
+  color: #27e8a7;
 }
 
 .red {
-  color: red;
+  color: #f25b5b;
 }
 
 .solved {
-  border-color: #17cd17 !important;
+  border: 2px solid #27e8a7 !important;
+  box-shadow: #27e8a7 0px 0px 10px;
 }
 
 .active {
-  outline: 2px solid #5959ef;
+  outline: 1px solid #add7ff;
 }
 
 .interactive__container {
@@ -371,20 +373,19 @@ main {
 
 .client__container {
   min-height: 100vh;
-  border-right: 1px solid #1f1f1f;
+  border-right: 1px solid #222128;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #1f2a40;
 }
 .client__item {
-  border: 2px solid grey;
-  border-radius: 15px;
+  border: 1px solid grey;
+  border-radius: 5px;
   margin: 3px 10px;
   text-align: center;
   font-weight: 600;
   padding: 5px 3px;
   text-decoration: none;
-  color: #1f1f1f;
 }
 .client__item i {
   padding-left: 20px;
@@ -397,6 +398,9 @@ main {
   transform: scale(102%);
   cursor: pointer;
 }
+.client__item:active {
+  transform: scale(100%);
+}
 
 .chat__container {
   display: grid;
@@ -408,44 +412,49 @@ main {
   padding: 0;
   padding-left: 10px;
   height: 60px;
-  border-radius: 10px 0 0 10px;
-  border: 2px solid #303030;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #222128;
+  color: black;
   font-size: 25px;
 }
 .chat__container button {
   height: 64px;
-  border-radius: 0 10px 10px 0;
-  border: 2px solid #303030;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #222128;
   border-left: 0;
+  background-color: #1f2a40;
   cursor: pointer;
   font-size: 25px;
+}
+.chat__container button:active {
+  transform: scale(98%);
 }
 
 .actions__container {
   display: grid;
   grid-template-columns: auto auto auto auto 100px;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 .actions__btn {
   height: 90%;
   width: 100%;
   font-size: 30px;
-  border-radius: 10px;
-  border: 2px solid #303030;
+  border-radius: 5px;
+  border: 1px solid #222128;
   cursor: pointer;
 }
 .actions__btn--start {
-  background-color: rgba(23, 205, 23, 0.9);
+  background-color: #42bf50;
 }
 .actions__btn--stop {
-  background-color: rgba(255, 0, 0, 0.9);
+  background-color: #f25b5b;
 }
 .actions__btn--pause {
-  background-color: rgba(255, 165, 0, 0.9);
+  background-color: #feb019;
 }
 .actions__btn--reset {
-  background-color: rgba(255, 0, 0, 0.9);
+  background-color: #f25b5b;
 }
 .actions__btn--camera {
   background-color: #5959ef;
@@ -458,13 +467,58 @@ main {
   transform: scale(102%);
   cursor: pointer;
 }
+.actions__btn:active {
+  transform: scale(100%);
+}
 
 .detail__container {
-  background-color: white;
-  border: 2px solid #303030;
-  border-radius: 10px;
+  background-color: #1f2a40;
+  border: 1px solid #222128;
+  border-radius: 5px;
   margin: 10px 0;
   padding: 0 20px;
+}
+.detail__actions {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, 50px);
+  gap: 10px;
+}
+.detail__button {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #222128;
+  border-radius: 5px;
+  background-color: white;
+  overflow: hidden;
+}
+.detail__button p {
+  margin: auto;
+  color: black;
+  font-size: 18px;
+}
+.detail__button button {
+  background-color: #5959ef;
+  border: none;
+  border-left: 1px solid #222128;
+  width: 50px;
+}
+.detail__button button i {
+  color: white;
+  font-size: 25px;
+}
+.detail__button button:hover {
+  cursor: pointer;
+  transform: scale(102%);
+  background-color: #5050f0f9;
+}
+.detail__button button:active {
+  transform: scale(100%);
+}
+.detail__button.state {
+  background-color: #27e8a7;
+  border: 1px solid #27e8a7 !important;
+  box-shadow: #27e8a7 0px 0px 10px;
 }
 
 .progress__container {
@@ -477,7 +531,7 @@ main {
   height: 30px;
   width: 100%;
   overflow: hidden;
-  border: 2px solid #303030;
+  border: 1px solid #222128;
   border-radius: 10px;
   background-color: white;
 }

@@ -3,7 +3,7 @@ import { routes } from "../../core/routing/routes";
 
 export const Detail = () => {
   return (
-    <div class="detail__container">
+    <div className="detail__container">
       <Switch>
         {routes.map((route, index) => (
           <Route path={`/${route.name}`} key={index}>
