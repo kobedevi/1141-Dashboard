@@ -3,10 +3,10 @@ import useElectron from "../../core/hooks/useElectron";
 export const StateButton = ({ stateData, clientData }) => {
   const { ipcRenderer } = useElectron();
   const { name, code } = stateData;
-  const { clientName, currentState } = clientData;
+  const { id, currentState } = clientData;
 
   const sendState = () => {
-    ipcRenderer.send("send", { state: code, client: clientName });
+    ipcRenderer.send("send", { state: code, client: id });
   };
 
   return (
