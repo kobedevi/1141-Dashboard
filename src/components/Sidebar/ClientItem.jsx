@@ -4,11 +4,11 @@ export const ClientItem = ({ data }) => {
   return (
     <NavLink
       activeclassName="client__item active"
-      className={`client__item ${data.state === 100 && "solved"}`}
-      to={`/${data.name}`}
+      className={`client__item ${data.currentState === 100 && "solved"}`}
+      to={`/${data.id}`}
       cl
     >
-      {data.name}{" "}
+      {data.id}{" "}
       <i
         className={`bi bi-hexagon-fill ${data.status === 1 ? "green" : "red"}`}
       ></i>

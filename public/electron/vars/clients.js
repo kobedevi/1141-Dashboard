@@ -4,15 +4,13 @@
 // State 100 = solved
 
 let clients = {
-  "client-01": {
+  "Client-01": {
     ipAddress: "192.168.1.235",
     port: 57112,
-    state: 0,
   },
-  "client-02": {
+  "Client-02": {
     ipAddress: "192.168.1.31",
     port: 57112,
-    state: 0,
   },
 };
 
