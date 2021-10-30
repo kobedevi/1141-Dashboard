@@ -1,10 +1,8 @@
 const appdata = require("../appData");
 const { clients } = require("../vars/clients");
 
-// Sendmessage function, use when no default state is available
-const sendMessage = (e, args) => {
-  const { state, client } = args;
-
+// Sendmessage function
+const sendMessage = ({ state, client }) => {
   const { ipAddress, port } = clients[client];
 
   appdata.udpPort.send(

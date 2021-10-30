@@ -5,6 +5,7 @@ export const StateButton = ({ stateData, clientData }) => {
   const { name, code } = stateData;
   const { id, currentState } = clientData;
 
+  // Send state and client to the main process
   const sendState = () => {
     ipcRenderer.send("send", { state: code, client: id });
   };

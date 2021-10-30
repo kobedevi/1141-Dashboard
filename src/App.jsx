@@ -6,6 +6,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App() {
   return (
+    // Make ipcRenderer available everywhere via contextProvider
     <ElectronProvider>
       <Router>
         <Dashboard />

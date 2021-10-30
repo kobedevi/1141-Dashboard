@@ -3,6 +3,7 @@
 // state 2 - 99 = extra states if neccesary
 // State 100 = solved
 
+// Temporary, probably data will come from a sqlite database
 let clients = {
   "Client-01": {
     ipAddress: "192.168.1.235",

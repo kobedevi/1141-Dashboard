@@ -11,6 +11,7 @@ const listener = () => {
     });
   });
 
+  // Error handling
   appdata.udpPort.on("error", function (err) {
     console.log(err);
   });

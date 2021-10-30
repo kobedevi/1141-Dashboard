@@ -8,6 +8,7 @@ require("dotenv").config();
 require("@electron/remote/main").initialize();
 
 const createWindow = () => {
+  // Create a new window
   appdata.mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -17,9 +18,11 @@ const createWindow = () => {
     },
   });
 
+  // Display the react app
   appdata.mainWindow.loadURL("http://localhost:3000");
 };
 
+// When the app ir running
 app.whenReady().then(() => {
   // Declare UDP Port and make globally available
   appdata.udpPort = new osc.UDPPort({
@@ -38,6 +41,7 @@ app.whenReady().then(() => {
   appdata.udpPort.open();
   console.log("Server running");
 
+  // Create the window
   createWindow();
 
   app.on("activate", () => {

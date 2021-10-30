@@ -1,3 +1,5 @@
+// Temp
+// This data should eventually come from the main process
 export const clients = [
   {
     id: "Client-01",
