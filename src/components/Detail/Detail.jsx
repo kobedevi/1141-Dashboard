@@ -1,12 +1,11 @@
 import { Route, Switch } from "react-router-dom";
-import { clients } from "../../core/routing/routes";
 import { ClientDetail } from "../../pages/templates/ClientDetail";
 
-export const Detail = () => {
+export const Detail = ({ data }) => {
   return (
     <div className="detail__container">
       <Switch>
-        {clients.map((client, index) => (
+        {data.map((client, index) => (
           <Route path={`/${client.id}`} key={index}>
             <ClientDetail data={client} />
           </Route>

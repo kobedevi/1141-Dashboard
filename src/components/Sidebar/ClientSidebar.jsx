@@ -1,10 +1,9 @@
-import { clients } from "../../core/routing/routes";
 import { ClientItem } from "./ClientItem";
 
-export const ClientSidebar = () => {
+export const ClientSidebar = ({ data }) => {
   return (
     <div class="client__container">
-      {clients.map((client, index) => (
+      {data.map((client, index) => (
         <ClientItem data={client} key={index} />
       ))}
     </div>

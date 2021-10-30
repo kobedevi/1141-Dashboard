@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Actions } from "../components/Actions/Actions";
 import { Chat } from "../components/Chat/Chat";
 import { Detail } from "../components/Detail/Detail";
@@ -8,20 +9,24 @@ import { clients } from "../core/routing/routes";
 
 export const Dashboard = () => {
   const { ipcRenderer } = useElectron();
+  const [data, setData] = useState(clients);
 
   ipcRenderer.on("state", (event, arg) => {
     const { name, state } = arg;
-    const objectIndex = clients.findIndex((obj) => obj.id === name);
-    clients[objectIndex].currentState = state;
+    const objectIndex = data.findIndex((obj) => obj.id === name);
+    const newArr = [...data];
+    newArr[objectIndex].currentState = state;
+    ipcRenderer.removeAllListeners("state");
+    setData(newArr);
   });
 
   return (
     <main>
-      <ClientSidebar />
+      <ClientSidebar data={data} />
       <div class="interactive__container">
         <Progress />
         <Actions />
-        <Detail />
+        <Detail data={data} />
         <Chat />
       </div>
     </main>
