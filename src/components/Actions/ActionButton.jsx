@@ -5,7 +5,7 @@ export const ActionButton = ({ name, children }) => {
 
   // Send action command to the main process
   const sendAction = () => {
-    ipcRenderer.send(name);
+    ipcRenderer.send("action", name);
   };
 
   return (

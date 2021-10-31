@@ -5,9 +5,8 @@ import { Detail } from "../components/Detail/Detail";
 import { Progress } from "../components/Progress/Progress";
 import { ClientSidebar } from "../components/Sidebar/ClientSidebar";
 import useElectron from "../core/hooks/useElectron";
-import { clients } from "../core/routing/routes";
 
-export const Dashboard = () => {
+export const Dashboard = ({ clients }) => {
   const { ipcRenderer } = useElectron();
   const [data, setData] = useState(clients);
 
