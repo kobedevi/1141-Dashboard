@@ -10,7 +10,7 @@ export const Input = ({
     <input
       id={name}
       name={name}
-      class={design}
+      className={design}
       type={type}
       placeholder={placeholder}
       onChange={onChange}

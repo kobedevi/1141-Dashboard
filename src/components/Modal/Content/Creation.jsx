@@ -6,7 +6,7 @@ export const Creation = (params) => {
   };
 
   return (
-    <div class="creation">
+    <div className="creation">
       <h2>Register client</h2>
       <hr />
       <CreationForm onSubmit={onSubmit} />

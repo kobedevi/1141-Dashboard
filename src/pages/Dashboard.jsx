@@ -29,7 +29,7 @@ export const Dashboard = ({ clients }) => {
   return (
     <main>
       <ClientSidebar data={data} />
-      <div class="interactive__container">
+      <div className="interactive__container">
         <Progress />
         <Actions />
         <Detail data={data} />

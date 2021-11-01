@@ -20,7 +20,7 @@ export const CreationForm = ({ onSubmit }) => {
   };
 
   return (
-    <form class="creation__form" onSubmit={() => onSubmit(data)}>
+    <form className="creation__form" onSubmit={() => onSubmit(data)}>
       <Input
         name="id"
         placeholder="Id"

@@ -3,10 +3,9 @@ import { NavLink } from "react-router-dom";
 export const ClientItem = ({ data }) => {
   return (
     <NavLink
-      activeclassName="client__item active"
+      activeClassName="client__item active"
       className={`client__item ${data.currentState === 100 && "solved"}`}
       to={`/${data.id}`}
-      cl
     >
       {data.id}{" "}
       <i

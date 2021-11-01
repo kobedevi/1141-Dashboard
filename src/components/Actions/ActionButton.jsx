@@ -19,7 +19,10 @@ export const ActionButton = ({ name, noModal, children }) => {
 
   if (noModal) {
     return (
-      <button class={`actions__btn actions__btn--${name}`} onClick={sendAction}>
+      <button
+        className={`actions__btn actions__btn--${name}`}
+        onClick={sendAction}
+      >
         {children}
       </button>
     );
@@ -28,7 +31,7 @@ export const ActionButton = ({ name, noModal, children }) => {
   return (
     <>
       <button
-        class={`actions__btn actions__btn--${name}`}
+        className={`actions__btn actions__btn--${name}`}
         onClick={toggleModal}
       >
         {children}

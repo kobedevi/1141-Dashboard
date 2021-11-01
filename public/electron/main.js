@@ -20,6 +20,9 @@ const createWindow = () => {
 
   // Display the react app
   appdata.mainWindow.loadURL("http://localhost:3000");
+
+  // Open devTools
+  appdata.mainWindow.webContents.openDevTools();
 };
 
 // When the app ir running

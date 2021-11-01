@@ -11,10 +11,10 @@ export const SidebarHeader = () => {
 
   return (
     <>
-      <div class="client__header">
+      <div className="client__header">
         <h2>Clients</h2>
         <button onClick={toggleVisible}>
-          <i class="bi bi-plus-lg"></i>
+          <i className="bi bi-plus-lg"></i>
         </button>
       </div>
 

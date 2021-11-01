@@ -1,6 +1,6 @@
 export const Confirmation = ({ action, onClick }) => {
   return (
-    <div class="confirmation">
+    <div className="confirmation">
       <h2>Confirm</h2>
       <hr />
       <p>
