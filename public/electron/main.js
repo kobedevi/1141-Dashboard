@@ -3,6 +3,7 @@ const appdata = require("./appData");
 const { app, BrowserWindow } = require("electron");
 const { listener } = require("./api/listener");
 const registerFunctions = require("./api/registerFunctions");
+const { initDataBase } = require("./db/initDataBase");
 
 require("dotenv").config();
 require("@electron/remote/main").initialize();
@@ -36,6 +37,8 @@ app.whenReady().then(() => {
 
   // Init listener for messages and errors
   listener();
+
+  initDataBase();
 
   // Register the actions
   registerFunctions();

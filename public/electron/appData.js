@@ -5,4 +5,5 @@
 module.exports = {
   udpPort: null,
   mainWindow: null,
+  dataBase: null,
 };

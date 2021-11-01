@@ -1,15 +1,18 @@
+import useElectron from "../../../core/hooks/useElectron";
 import { CreationForm } from "../../Forms/CreationForm";
 
-export const Creation = (params) => {
+export const Creation = ({ closeModal }) => {
+  const { ipcRenderer } = useElectron();
+
   const onSubmit = (data) => {
-    console.log(data);
+    ipcRenderer.send("saveClient", data);
   };
 
   return (
     <div className="creation">
       <h2>Register client</h2>
       <hr />
-      <CreationForm onSubmit={onSubmit} />
+      <CreationForm onSubmit={onSubmit} closeModal={closeModal} />
     </div>
   );
 };

@@ -9,7 +9,7 @@ const initialData = {
   extraStates: [],
 };
 
-export const CreationForm = ({ onSubmit }) => {
+export const CreationForm = ({ onSubmit, closeModal }) => {
   const [data, setData] = useState(initialData);
 
   const handleChange = (e) => {
@@ -51,6 +51,7 @@ export const CreationForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(data);
+    closeModal();
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Actions } from "../components/Actions/Actions";
 import { Chat } from "../components/Chat/Chat";
 import { Detail } from "../components/Detail/Detail";
@@ -8,7 +8,10 @@ import useElectron from "../core/hooks/useElectron";
 
 export const Dashboard = ({ clients }) => {
   const { ipcRenderer } = useElectron();
-  const [data, setData] = useState(clients);
+  const [data, setData] = useState([]);
+
+  // Rerender everything if clients change
+  useEffect(() => setData(clients), [clients]);
 
   // Initialise a listener for changes in client state
   ipcRenderer.on("state", (event, arg) => {

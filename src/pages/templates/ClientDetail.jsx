@@ -6,7 +6,7 @@ export const ClientDetail = ({ data }) => {
     <>
       <h1>{`${data.id} | ${data.puzzleName}`}</h1>
       <hr />
-      <div class="detail__actions">
+      <div className="detail__actions">
         {/* Component containing the three defaultstates buttons: inactive, active and solved */}
         <DefaultActions client={data} />
 

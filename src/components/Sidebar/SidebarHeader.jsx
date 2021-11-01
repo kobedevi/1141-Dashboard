@@ -3,7 +3,7 @@ import { Creation } from "../Modal/Content/Creation";
 import { Modal } from "../Modal/Modal";
 
 export const SidebarHeader = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
     setVisible(!visible);
@@ -20,7 +20,7 @@ export const SidebarHeader = () => {
 
       {visible && (
         <Modal onClose={toggleVisible}>
-          <Creation />
+          <Creation closeModal={toggleVisible} />
         </Modal>
       )}
     </>
