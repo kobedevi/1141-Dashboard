@@ -5,10 +5,11 @@ export const Input = ({
   onChange,
   value,
   name,
+  id,
 }) => {
   return (
     <input
-      id={name}
+      id={id}
       name={name}
       className={design}
       type={type}

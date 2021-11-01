@@ -9,7 +9,7 @@ export const ClientSidebar = ({ data }) => {
       {data.map((client, index) => (
         <ClientItem data={client} key={index} />
       ))}
-      {/* <SidebarFooter /> */}
+      <SidebarFooter />
     </div>
   );
 };

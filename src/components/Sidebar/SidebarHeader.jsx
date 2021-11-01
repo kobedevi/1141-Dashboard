@@ -3,7 +3,7 @@ import { Creation } from "../Modal/Content/Creation";
 import { Modal } from "../Modal/Modal";
 
 export const SidebarHeader = () => {
-  const [visible, setVisible] = useState();
+  const [visible, setVisible] = useState(true);
 
   const toggleVisible = () => {
     setVisible(!visible);

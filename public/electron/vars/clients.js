@@ -12,6 +12,7 @@ const clients = [
     status: 1,
     ipAddress: "192.168.1.235",
     port: 57112,
+    extraStates: [],
   },
   {
     id: "Client-02",

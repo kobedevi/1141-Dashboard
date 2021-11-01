@@ -356,6 +356,11 @@ main {
   color: #f25b5b;
 }
 
+.redbg {
+  background-color: #f25b5b !important;
+  margin-left: 10px;
+}
+
 .solved {
   border: 2px solid #27e8a7 !important;
   box-shadow: #27e8a7 0px 0px 10px;
@@ -676,6 +681,7 @@ button:active {
 .creation__state input {
   border: 1px solid #222128;
   padding-left: 10px;
+  color: black;
 }
 .creation__state .stateName {
   width: 100%;
