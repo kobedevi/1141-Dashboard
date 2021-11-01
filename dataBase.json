@@ -1,61 +1,53 @@
 {
-    "clients": [
+  "clients": [
+    {
+      "id": "Client-01",
+      "puzzleName": "Sensehat",
+      "currentState": 1,
+      "status": 1,
+      "ipAddress": "192.168.1.31",
+      "port": 57112,
+      "extraStates": []
+    },
+    {
+      "id": "Client-02",
+      "puzzleName": "Test",
+      "currentState": 111,
+      "extraStates": [
         {
-            "id": "Client-01",
-            "puzzleName": "Sensehat",
-            "currentState": 1,
-            "status": 1,
-            "ipAddress": "192.168.1.235",
-            "port": 57112,
-            "extraStates": []
+          "name": "extrastate",
+          "code": 111
         },
         {
-            "id": "Client-02",
-            "puzzleName": "Test",
-            "currentState": 111,
-            "extraStates": [
-                {
-                    "name": "extrastate",
-                    "code": 111
-                },
-                {
-                    "name": "extrastate 2",
-                    "code": 112
-                }
-            ],
-            "status": 0,
-            "ipAddress": "192.168.1.31",
-            "port": 57112
-        },
-        {
-            "id": "s",
-            "puzzleName": "s",
-            "ipAddress": "s",
-            "port": "6",
-            "extraStates": []
-        },
-        {
-            "id": "s",
-            "puzzleName": "s",
-            "ipAddress": "s",
-            "port": "4",
-            "extraStates": []
-        },
-        {
-            "id": "ght",
-            "puzzleName": "fgf",
-            "ipAddress": "fgfg",
-            "port": "564",
-            "extraStates": [
-                {
-                    "name": "gfgf",
-                    "code": "345"
-                },
-                {
-                    "name": "654",
-                    "code": "654"
-                }
-            ]
+          "name": "extrastate 2",
+          "code": 112
         }
-    ]
+      ],
+      "status": 0,
+      "ipAddress": "192.168.1.31",
+      "port": 57112
+    },
+    {
+      "id": "Client-03",
+      "puzzleName": "test via dashboard",
+      "ipAddress": "192.168.1.31",
+      "port": 57112,
+      "extraStates": [
+        {
+          "name": "extrastate 1",
+          "code": 11
+        },
+        {
+          "name": "extrastate 2",
+          "code": 12
+        },
+        {
+          "name": "extrastate 3",
+          "code": 13
+        }
+      ],
+      "currentState": 0,
+      "status": 0
+    }
+  ]
 }
