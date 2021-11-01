@@ -2,23 +2,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
-import useElectron from "./core/hooks/useElectron";
-import { useState } from "react";
+import { ElectronProvider } from "./core/context/electron";
 
 function App() {
-  const { ipcRenderer } = useElectron();
-
-  const [clients, setClients] = useState(ipcRenderer.sendSync("getClients"));
-
-  ipcRenderer.on("dataChange", (event, arg) => {
-    ipcRenderer.removeAllListeners("dataChange");
-    setClients(arg);
-  });
-
   return (
-    <Router>
-      <Dashboard clients={clients} />
-    </Router>
+    // Make ipcRenderer available everywhere via contextProvider
+    <ElectronProvider>
+      <Router>
+        <Dashboard />
+      </Router>
+    </ElectronProvider>
   );
 }
 

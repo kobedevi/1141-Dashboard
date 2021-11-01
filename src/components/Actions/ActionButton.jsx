@@ -13,15 +13,16 @@ export const ActionButton = ({ name, noModal, children }) => {
   };
 
   // Send action command to the main process
-  const sendAction = () => {
+  const handleClick = () => {
     ipcRenderer.send("action", name);
+    toggleModal();
   };
 
   if (noModal) {
     return (
       <button
         className={`actions__btn actions__btn--${name}`}
-        onClick={sendAction}
+        onClick={handleClick}
       >
         {children}
       </button>
@@ -39,7 +40,7 @@ export const ActionButton = ({ name, noModal, children }) => {
 
       {!close && (
         <Modal onClose={toggleModal}>
-          <Confirmation onClick={sendAction} action={name} />
+          <Confirmation onClick={handleClick} action={name} />
         </Modal>
       )}
     </>
