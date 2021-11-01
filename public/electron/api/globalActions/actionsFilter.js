@@ -20,6 +20,10 @@ module.exports = (action) => {
       pause();
       break;
 
+    case "camera":
+      console.log("TODO: Open camera window");
+      break;
+
     default:
       console.log("Got wrong action");
       break;

@@ -7,7 +7,7 @@ export const Actions = () => {
       <ActionButton name="pause">Pause</ActionButton>
       <ActionButton name="stop">Stop</ActionButton>
       <ActionButton name="reset">Reset</ActionButton>
-      <ActionButton name="camera">
+      <ActionButton name="camera" noModal>
         <i class="bi bi-camera-video"></i>
       </ActionButton>
     </div>

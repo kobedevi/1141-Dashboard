@@ -187,9 +187,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type=button],
-[type=reset],
-[type=submit] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -197,9 +197,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -208,9 +208,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -260,8 +260,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type=checkbox],
-[type=radio] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -271,8 +271,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -280,7 +280,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type=search] {
+[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -290,7 +290,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type=search]::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -371,24 +371,59 @@ main {
   padding: 0 20px;
 }
 
+button:hover {
+  transform: scale(102%);
+  cursor: pointer;
+}
+button:active {
+  transform: scale(100%);
+}
+
 .client__container {
-  min-height: 100vh;
+  position: relative;
+  height: 100vh;
   border-right: 1px solid #222128;
   display: flex;
   flex-direction: column;
   background-color: #1f2a40;
+  overflow-y: scroll;
+}
+.client__header {
+  display: grid;
+  grid-template-columns: auto 40px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 3px 10px 3px;
+  margin: 3px 10px 10px 10px;
+  border-bottom: 1px solid grey;
+}
+.client__header h2 {
+  margin: 0;
+}
+.client__header button {
+  height: 40px;
+  background-color: #5959ef;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #222128;
+  cursor: pointer;
+}
+.client__header button i {
+  font-size: 18px;
 }
 .client__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border: 1px solid grey;
   border-radius: 5px;
   margin: 3px 10px;
-  text-align: center;
+  padding: 5px 10px;
   font-weight: 600;
-  padding: 5px 3px;
   text-decoration: none;
+  background: transparent;
 }
 .client__item i {
-  padding-left: 20px;
   font-size: 20px;
 }
 .client__item:first-child {
@@ -400,6 +435,25 @@ main {
 }
 .client__item:active {
   transform: scale(100%);
+}
+.client__configure {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-top: auto;
+  border-top: 1px solid grey;
+  background-color: #1f2a40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 8px;
+}
+.client__configure .client__item {
+  width: 100%;
+  margin: 10px 10px !important;
+  background-color: #5959ef;
+  border: 1px solid #222128;
 }
 
 .chat__container {
@@ -463,13 +517,6 @@ main {
 .actions__btn--camera i {
   font-size: 50px;
 }
-.actions__btn:hover {
-  transform: scale(102%);
-  cursor: pointer;
-}
-.actions__btn:active {
-  transform: scale(100%);
-}
 
 .detail__container {
   background-color: #1f2a40;
@@ -508,12 +555,7 @@ main {
   font-size: 25px;
 }
 .detail__button button:hover {
-  cursor: pointer;
-  transform: scale(102%);
   background-color: #5050f0f9;
-}
-.detail__button button:active {
-  transform: scale(100%);
 }
 .detail__button.state {
   background-color: #27e8a7;
@@ -542,6 +584,107 @@ main {
 .progress__timer {
   margin: 0;
   text-align: center;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+}
+.modal__background {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: #000000c5;
+}
+.modal__popup {
+  position: relative;
+  background-color: #1f2a40;
+  padding: 30px;
+  border-radius: 5px;
+}
+.modal__close {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 100;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #5959ef;
+}
+
+.confirmation h2 {
+  margin: 0;
+}
+.confirmation button {
+  width: 100%;
+  border: 1px solid #222128;
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-top: 10px;
+  background-color: #f25b5b;
+}
+
+.creation {
+  width: 450px;
+}
+.creation h2 {
+  margin: 0;
+}
+.creation__form {
+  display: grid;
+  grid-template-rows: repeat(4, 40px);
+  row-gap: 10px;
+}
+.creation__input {
+  border-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  color: black;
+}
+.creation button {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #222128;
+  background-color: #5959ef;
+}
+.creation__stateContainer {
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+.creation__stateContainer h3 {
+  color: black;
+  margin: 0;
+  margin-bottom: 5px;
+}
+.creation__stateContainer button {
+  width: 40px;
+}
+.creation__stateContainer button i {
+  font-size: 20px;
+}
+.creation__state {
+  display: flex;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.creation__state input {
+  border: 1px solid #222128;
+  padding-left: 10px;
+}
+.creation__state .stateName {
+  width: 100%;
+  border-radius: 5px 0 0 5px;
+}
+.creation__state .stateCode {
+  width: 60px;
+  border-radius: 0 5px 5px 0;
+  border-left: none;
 }
 
 /*# sourceMappingURL=main.css.map */
