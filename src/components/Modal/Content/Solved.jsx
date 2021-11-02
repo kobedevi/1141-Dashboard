@@ -1,19 +1,19 @@
 import useElectron from "../../../core/hooks/useElectron";
-import { CreationForm } from "../../Forms/CreationForm";
+import { SolvedForm } from "../../Forms/SolvedForm";
 
-export const Creation = ({ closeModal }) => {
+export const Solved = ({ closeModal }) => {
   const { ipcRenderer } = useElectron();
 
   const onSubmit = (data) => {
     closeModal();
-    ipcRenderer.send("saveClient", data);
+    ipcRenderer.send("saveOnSolved", data);
   };
 
   return (
     <div className="creation">
-      <h2>Register client</h2>
+      <h2>Solve logic</h2>
       <hr />
-      <CreationForm onSubmit={onSubmit} />
+      <SolvedForm onSubmit={onSubmit} />
     </div>
   );
 };

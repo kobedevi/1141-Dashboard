@@ -187,9 +187,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type=button],
+[type=reset],
+[type=submit] {
   -webkit-appearance: button;
 }
 
@@ -197,9 +197,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -208,9 +208,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -260,8 +260,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type="checkbox"],
-[type="radio"] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box;
   /* 1 */
   padding: 0;
@@ -271,8 +271,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -280,7 +280,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type="search"] {
+[type=search] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -290,7 +290,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type="search"]::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -358,6 +358,9 @@ main {
 
 .redbg {
   background-color: #f25b5b !important;
+}
+
+.ml {
   margin-left: 10px;
 }
 
@@ -530,6 +533,28 @@ button:active {
   margin: 10px 0;
   padding: 0 20px;
 }
+.detail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding-top: 10px;
+}
+.detail__header h1 {
+  margin: 0;
+}
+.detail__header button {
+  height: 40px;
+  width: 40px;
+  background-color: #5959ef;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #222128;
+  cursor: pointer;
+}
+.detail__header button i {
+  font-size: 18px;
+}
 .detail__actions {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -642,7 +667,7 @@ button:active {
 }
 .creation__form {
   display: grid;
-  grid-template-rows: repeat(4, 40px);
+  grid-template-rows: 40px 40px 40px 40px auto 40px 40px;
   row-gap: 10px;
 }
 .creation__input {
@@ -680,8 +705,8 @@ button:active {
 }
 .creation__state input {
   border: 1px solid #222128;
-  padding-left: 10px;
   color: black;
+  padding-left: 10px;
 }
 .creation__state .stateName {
   width: 100%;
@@ -689,6 +714,50 @@ button:active {
 }
 .creation__state .stateCode {
   width: 60px;
+  border-radius: 0 5px 5px 0;
+  border-left: none;
+}
+
+.solve__form {
+  display: grid;
+  grid-template-rows: auto 40px;
+  gap: 10px;
+}
+.solve__form select {
+  color: black;
+}
+.solve__stateContainer {
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+.solve__stateContainer h3 {
+  color: black;
+  margin: 0;
+  margin-bottom: 5px;
+}
+.solve__stateContainer button {
+  width: 40px;
+}
+.solve__stateContainer button i {
+  font-size: 20px;
+}
+.solve__state {
+  display: flex;
+  height: 40px;
+  margin-bottom: 10px;
+}
+.solve__state select {
+  border: 1px solid #222128;
+  color: black;
+  padding-left: 10px;
+}
+.solve__state .stateName {
+  width: 100%;
+  border-radius: 5px 0 0 5px;
+}
+.solve__state .stateCode {
+  width: 100px;
   border-radius: 0 5px 5px 0;
   border-left: none;
 }

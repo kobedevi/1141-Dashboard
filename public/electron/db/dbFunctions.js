@@ -18,6 +18,21 @@ const saveClient = (data) => {
   sendClients();
 };
 
+// Delete client
+const deleteClient = (client) => {
+  appData.dataBase.delete(`/clients/${client}`);
+
+  // Send the updated data
+  sendClients();
+};
+
+const saveOnSolved = ({ options, currentClient }) => {
+  appData.dataBase.push(`/clients${currentClient}/onSolved`, options);
+
+  // Send the updated data
+  sendClients();
+};
+
 // Save incoming client-state
 const saveState = ({ address, args }) => {
   // get the client's data
@@ -36,5 +51,7 @@ const saveState = ({ address, args }) => {
 module.exports = {
   sendClients,
   saveClient,
+  deleteClient,
   saveState,
+  saveOnSolved,
 };

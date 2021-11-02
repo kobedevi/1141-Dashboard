@@ -7,9 +7,11 @@ const initialData = {
   ipAddress: "",
   port: "",
   extraStates: [],
+  onStart: "",
+  onStop: "",
 };
 
-export const CreationForm = ({ onSubmit, closeModal }) => {
+export const CreationForm = ({ onSubmit }) => {
   const [data, setData] = useState(initialData);
 
   const handleChange = (e) => {
@@ -51,7 +53,6 @@ export const CreationForm = ({ onSubmit, closeModal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(data);
-    closeModal();
   };
 
   return (
@@ -114,11 +115,27 @@ export const CreationForm = ({ onSubmit, closeModal }) => {
         </button>
         {/* Only show button when there are extra states in the array */}
         {data.extraStates.length && (
-          <button onClick={removeState} className="redbg">
+          <button onClick={removeState} className="redbg ml">
             <i className="bi bi-dash"></i>
           </button>
         )}
       </div>
+      <Input
+        name="onStart"
+        placeholder="On Start"
+        type="number"
+        design="creation__input"
+        value={data.onStart}
+        onChange={handleChange}
+      />
+      <Input
+        name="onStop"
+        type="number"
+        placeholder="On Stop"
+        design="creation__input"
+        value={data.onStop}
+        onChange={handleChange}
+      />
 
       <button type="submit">Register</button>
     </form>

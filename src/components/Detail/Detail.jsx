@@ -1,7 +1,10 @@
 import { Route, Switch } from "react-router-dom";
+import useData from "../../core/hooks/useData";
 import { ClientDetail } from "../../pages/templates/ClientDetail";
 
-export const Detail = ({ data }) => {
+export const Detail = () => {
+  const { data } = useData();
+
   return (
     <div className="detail__container">
       <Switch>

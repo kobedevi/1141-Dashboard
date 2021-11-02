@@ -13,9 +13,12 @@ const clients = [
     ipAddress: "",
     port: 0,
     onStart: 1,
-    onSolved: {
-      "client-07": 0,
-    },
+    onSolved: [
+      {
+        id: "Client-02",
+        code: 1,
+      },
+    ],
   },
 ];
 
