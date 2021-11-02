@@ -1,15 +1,16 @@
 var osc = require("osc");
-const appdata = require("./appData");
+const appData = require("./appData");
 const { app, BrowserWindow } = require("electron");
 const { listener } = require("./api/listener");
 const registerFunctions = require("./api/registerFunctions");
+const { initDataBase } = require("./db/initDataBase");
 
 require("dotenv").config();
 require("@electron/remote/main").initialize();
 
 const createWindow = () => {
   // Create a new window
-  appdata.mainWindow = new BrowserWindow({
+  appData.mainWindow = new BrowserWindow({
     width: 1280,
     height: 720,
     webPreferences: {
@@ -19,13 +20,16 @@ const createWindow = () => {
   });
 
   // Display the react app
-  appdata.mainWindow.loadURL("http://localhost:3000");
+  appData.mainWindow.loadURL("http://localhost:3000");
+
+  // Open devTools
+  appData.mainWindow.webContents.openDevTools();
 };
 
 // When the app ir running
 app.whenReady().then(() => {
   // Declare UDP Port and make globally available
-  appdata.udpPort = new osc.UDPPort({
+  appData.udpPort = new osc.UDPPort({
     localAddress: process.env.LOCAL_ADDRESS,
     localPort: process.env.LOCAL_PORT,
     metadata: true,
@@ -34,11 +38,13 @@ app.whenReady().then(() => {
   // Init listener for messages and errors
   listener();
 
+  initDataBase();
+
   // Register the actions
   registerFunctions();
 
   // Open the socket.
-  appdata.udpPort.open();
+  appData.udpPort.open();
   console.log("Server running");
 
   // Create the window

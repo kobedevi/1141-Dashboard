@@ -1,15 +1,11 @@
-const appdata = require("../appData");
-const { clients } = require("../vars/clients");
+const appData = require("../appData");
 
-// Sendmessage function
+// Send message to a client
 const sendMessage = ({ state, client }) => {
-  // Find the index of the changed object
-  const objectIndex = clients.findIndex((obj) => obj.id === client);
+  // Get the data from the database
+  const { ipAddress, port } = appData.dataBase.getData(`/clients/${client}`);
 
-  // Get the ip and port of the requested client
-  const { ipAddress, port } = clients[objectIndex];
-
-  appdata.udpPort.send(
+  appData.udpPort.send(
     {
       address: "/servermessage",
       args: {
