@@ -3,7 +3,7 @@ import useData from "../../core/hooks/useData";
 import { SolvedSelect } from "../Modal/Content/SolvedSelect";
 
 const initialData = {
-  options: [{ id: "", code: "" }],
+  options: [],
   currentClient: "",
 };
 
@@ -76,7 +76,7 @@ export const SolvedForm = ({ onSubmit }) => {
         </button>
 
         {/* Only show button when there are extra options in the array */}
-        {data.options.length > 1 && (
+        {data.options.length && (
           <button onClick={removeOption} className="redbg ml">
             <i className="bi bi-dash"></i>
           </button>

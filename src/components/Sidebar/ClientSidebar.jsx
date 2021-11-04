@@ -4,7 +4,9 @@ import { SidebarFooter } from "./SidebarFooter";
 import { SidebarHeader } from "./SidebarHeader";
 
 export const ClientSidebar = () => {
+  // Get data from context
   const { data } = useData();
+
   return (
     <div className="client__container">
       <SidebarHeader />

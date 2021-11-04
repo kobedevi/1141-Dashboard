@@ -1,8 +1,9 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import useData from "../../core/hooks/useData";
 import { ClientDetail } from "../../pages/templates/ClientDetail";
 
 export const Detail = () => {
+  // Get data from context
   const { data } = useData();
 
   return (
@@ -14,6 +15,10 @@ export const Detail = () => {
             <ClientDetail data={client} />
           </Route>
         ))}
+        <Route path="/">
+          {/* Redirect to first client in the array */}
+          <Redirect to={`/${data[0].id}`} />
+        </Route>
       </Switch>
     </div>
   );

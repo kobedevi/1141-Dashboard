@@ -1,18 +1,27 @@
-import * as React from "react";
+import { createContext, useEffect, useState } from "react";
 import useElectron from "../hooks/useElectron";
 
-const DataContext = React.createContext();
+const DataContext = createContext();
 
 // Content provider for the ipcRenderer function
 const DataProvider = ({ children }) => {
   const { ipcRenderer } = useElectron();
 
-  const [data, setData] = React.useState(ipcRenderer.sendSync("getClients"));
+  const initialData = () => {
+    return ipcRenderer.sendSync("getClients");
+  };
 
-  ipcRenderer.on("dataChange", (event, arg) => {
-    ipcRenderer.removeAllListeners("dataChange");
-    setData(arg);
+  const [data, setData] = useState(initialData);
+
+  // Register listener after render
+  useEffect(() => {
+    ipcRenderer.once("dataChange", (event, arg) => {
+      console.log("Got data");
+      setData(arg);
+    });
   });
+
+  console.log("Rendered");
 
   return (
     <DataContext.Provider value={{ data }}>{children}</DataContext.Provider>

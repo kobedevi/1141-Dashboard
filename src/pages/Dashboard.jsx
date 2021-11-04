@@ -1,22 +1,21 @@
+import { Switch, Route } from "react-router-dom";
 import { Actions } from "../components/Actions/Actions";
 import { Chat } from "../components/Chat/Chat";
 import { Detail } from "../components/Detail/Detail";
 import { Progress } from "../components/Progress/Progress";
-import { ClientSidebar } from "../components/Sidebar/ClientSidebar";
-import { DataProvider } from "../core/context/data";
 
 export const Dashboard = () => {
   return (
-    <main>
-      <DataProvider>
-        <ClientSidebar />
+    <Switch>
+      <Route path="/configure">test</Route>
+      <Route path="/">
         <div className="interactive__container">
           <Progress />
           <Actions />
           <Detail />
           <Chat />
         </div>
-      </DataProvider>
-    </main>
+      </Route>
+    </Switch>
   );
 };

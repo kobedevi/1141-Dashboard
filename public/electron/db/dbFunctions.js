@@ -3,11 +3,8 @@ const appData = require("../appData");
 
 // Send client data to render process
 const sendClients = () => {
-  // Get all the client data
-  const data = appData.dataBase.getData("/clients");
-
   // Send the data to render process
-  appData.mainWindow.webContents.send("dataChange", formatGetClients(data));
+  appData.mainWindow.webContents.send("dataChange", formatGetClients());
 };
 
 // Save new client-data

@@ -60,6 +60,7 @@ export const CreationForm = ({ onSubmit }) => {
       <Input
         name="id"
         placeholder="Id"
+        type="number"
         design="creation__input"
         value={data.id}
         onChange={handleChange}
