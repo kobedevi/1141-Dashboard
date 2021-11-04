@@ -6,6 +6,7 @@ export const Input = ({
   value,
   name,
   id,
+  disabled,
 }) => {
   return (
     <input
@@ -16,6 +17,7 @@ export const Input = ({
       placeholder={placeholder}
       onChange={onChange}
       value={value}
+      disabled={disabled}
     />
   );
 };

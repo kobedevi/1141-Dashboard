@@ -11,9 +11,7 @@ export const Creation = ({ closeModal }) => {
 
   return (
     <div className="creation">
-      <h2>Register client</h2>
-      <hr />
-      <CreationForm onSubmit={onSubmit} />
+      <CreationForm onSubmit={onSubmit} title="Create client" />
     </div>
   );
 };

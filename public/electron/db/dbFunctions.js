@@ -1,4 +1,4 @@
-const { formatGetClients, formatClientCreation } = require("./formatFunctions");
+const { formatGetClients, formatClientForDB } = require("./formatFunctions");
 const appData = require("../appData");
 
 // Send client data to render process
@@ -9,7 +9,11 @@ const sendClients = () => {
 
 // Save new client-data
 const saveClient = (data) => {
-  appData.dataBase.push("/clients", formatClientCreation(data), false);
+  appData.dataBase.push(
+    `/clients/Client-${data.id}`,
+    formatClientForDB(data),
+    true
+  );
 
   // Send the updated data
   sendClients();
