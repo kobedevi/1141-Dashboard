@@ -1,7 +1,8 @@
-import * as React from "react";
+import { createContext } from "react";
+
 const { ipcRenderer } = window.require("electron");
 
-const ElectronContext = React.createContext();
+const ElectronContext = createContext();
 
 // Content provider for the ipcRenderer function
 const ElectronProvider = ({ children }) => {

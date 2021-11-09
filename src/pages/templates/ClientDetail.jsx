@@ -1,10 +1,11 @@
 import { DefaultActions } from "../../components/Detail/DefaultActions";
+import { DetailHeader } from "../../components/Detail/DetailHeader";
 import { StateButton } from "../../components/Detail/StateButton";
 
 export const ClientDetail = ({ data }) => {
   return (
     <>
-      <h1>{`${data.id} | ${data.puzzleName}`}</h1>
+      <DetailHeader data={data} />
       <hr />
       <div className="detail__actions">
         {/* Component containing the three defaultstates buttons: inactive, active and solved */}

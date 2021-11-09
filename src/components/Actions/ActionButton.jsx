@@ -40,7 +40,10 @@ export const ActionButton = ({ name, noModal, children }) => {
 
       {!close && (
         <Modal onClose={toggleModal}>
-          <Confirmation onClick={handleClick} action={name} />
+          <Confirmation
+            onClick={handleClick}
+            text={`Are you sure you want to ${name} the game?`}
+          />
         </Modal>
       )}
     </>

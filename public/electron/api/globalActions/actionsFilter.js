@@ -1,23 +1,29 @@
-const pause = require("./pause");
-const reset = require("./reset");
-const start = require("./start");
+const { formatGetClients } = require("../../db/formatFunctions");
+const { sendMessage } = require("../sendMessage");
 
 module.exports = (action) => {
+  // Get all the clientsData as an array
+  const data = formatGetClients();
+
   switch (action) {
     case "start":
-      start();
-      break;
-
-    case "stop":
-      reset();
+      console.log("Start game");
+      // Send active state to every client
+      data.forEach((item) => {
+        sendMessage({ state: 1, client: item.id });
+      });
       break;
 
     case "reset":
-      reset();
+      console.log("Reset game");
+      // Send inactive state to every client
+      data.forEach((item) => {
+        sendMessage({ state: 0, client: item.id });
+      });
       break;
 
     case "pause":
-      pause();
+      console.log("Pause game");
       break;
 
     case "camera":

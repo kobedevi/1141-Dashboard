@@ -1,0 +1,35 @@
+.chat {
+  &__container {
+    display: grid;
+    grid-template-columns: 85% 15%;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      padding: 0;
+      padding-left: 10px;
+      height: 60px;
+      border-radius: 5px 0 0 5px;
+      border: 1px solid #222128;
+      color: black;
+
+      font-size: 25px;
+    }
+
+    button {
+      height: 64px;
+      border-radius: 0 5px 5px 0;
+      border: 1px solid #222128;
+      border-left: 0;
+
+      background-color: #1f2a40;
+
+      cursor: pointer;
+      font-size: 25px;
+
+      &:active {
+        transform: scale(98%);
+      }
+    }
+  }
+}

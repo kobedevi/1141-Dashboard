@@ -1,0 +1,20 @@
+.configure {
+  &__container {
+    display: grid;
+    grid-template-columns: auto;
+
+    padding: 20px;
+  }
+
+  &__content {
+    background-color: #1f2a40;
+    border: 1px solid #222128;
+    border-radius: 5px;
+
+    padding: 20px;
+
+    h1 {
+      margin: 0;
+    }
+  }
+}

@@ -1,18 +1,34 @@
-const { formatGetClients, formatClientCreation } = require("./formatFunctions");
+const { formatGetClients, formatClientForDB } = require("./formatFunctions");
 const appData = require("../appData");
 
 // Send client data to render process
 const sendClients = () => {
-  // Get all the client data
-  const data = appData.dataBase.getData("/clients");
-
   // Send the data to render process
-  appData.mainWindow.webContents.send("dataChange", formatGetClients(data));
+  appData.mainWindow.webContents.send("dataChange", formatGetClients());
 };
 
 // Save new client-data
 const saveClient = (data) => {
-  appData.dataBase.push("/clients", formatClientCreation(data), false);
+  appData.dataBase.push(
+    `/clients/Client-${data.id}`,
+    formatClientForDB(data),
+    true
+  );
+
+  // Send the updated data
+  sendClients();
+};
+
+// Delete client
+const deleteClient = (client) => {
+  appData.dataBase.delete(`/clients/${client}`);
+
+  // Send the updated data
+  sendClients();
+};
+
+const saveOnSolved = ({ options, currentClient }) => {
+  appData.dataBase.push(`/clients${currentClient}/onSolved`, options);
 
   // Send the updated data
   sendClients();
@@ -36,5 +52,7 @@ const saveState = ({ address, args }) => {
 module.exports = {
   sendClients,
   saveClient,
+  deleteClient,
   saveState,
+  saveOnSolved,
 };

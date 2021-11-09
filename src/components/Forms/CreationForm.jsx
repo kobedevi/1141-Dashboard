@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Input } from "../Input";
 
-const initialData = {
+const defaultData = {
   id: "",
   puzzleName: "",
   ipAddress: "",
@@ -9,8 +9,11 @@ const initialData = {
   extraStates: [],
 };
 
-export const CreationForm = ({ onSubmit, closeModal }) => {
-  const [data, setData] = useState(initialData);
+export const CreationForm = ({ title, onSubmit, initialData }) => {
+  const [data, setData] = useState({
+    ...defaultData,
+    ...initialData,
+  });
 
   const handleChange = (e) => {
     if (["name", "code"].includes(e.target.name)) {
@@ -51,76 +54,81 @@ export const CreationForm = ({ onSubmit, closeModal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(data);
-    closeModal();
   };
 
   return (
-    <form className="creation__form" onSubmit={handleSubmit}>
-      <Input
-        name="id"
-        placeholder="Id"
-        design="creation__input"
-        value={data.id}
-        onChange={handleChange}
-      />
-      <Input
-        name="puzzleName"
-        placeholder="Puzzle name"
-        design="creation__input"
-        value={data.puzzleName}
-        onChange={handleChange}
-      />
-      <Input
-        name="ipAddress"
-        placeholder="Ip address"
-        design="creation__input"
-        value={data.ipAddress}
-        onChange={handleChange}
-      />
-      <Input
-        name="port"
-        type="number"
-        placeholder="Port"
-        design="creation__input"
-        value={data.port}
-        onChange={handleChange}
-      />
+    <>
+      <h2>{title}</h2>
+      <hr />
+      <form className="creation__form" onSubmit={handleSubmit}>
+        <Input
+          name="id"
+          placeholder="Id"
+          type="number"
+          design="creation__input"
+          value={data.id}
+          onChange={handleChange}
+          disabled={initialData ? true : false}
+        />
+        <Input
+          name="puzzleName"
+          placeholder="Puzzle name"
+          design="creation__input"
+          value={data.puzzleName}
+          onChange={handleChange}
+        />
+        <Input
+          name="ipAddress"
+          placeholder="Ip address"
+          design="creation__input"
+          value={data.ipAddress}
+          onChange={handleChange}
+        />
+        <Input
+          name="port"
+          type="number"
+          placeholder="Port"
+          design="creation__input"
+          value={data.port}
+          onChange={handleChange}
+        />
 
-      <div className="creation__stateContainer">
-        <h3>Extra states</h3>
-        {data.extraStates.map((state, index) => (
-          <div className="creation__state" key={index}>
-            <Input
-              id={index}
-              name="name"
-              placeholder="Name"
-              design="stateName"
-              value={state.name}
-              onChange={handleChange}
-            />
-            <Input
-              id={index}
-              name="code"
-              type="number"
-              placeholder="Code"
-              design="stateCode"
-              value={state.code}
-              onChange={handleChange}
-            />
-          </div>
-        ))}
-        <button onClick={addState}>
-          <i className="bi bi-plus-lg"></i>
-        </button>
-        {/* Only show button when there are extra states in the array */}
-        {data.extraStates.length && (
-          <button onClick={removeState} className="redbg">
-            <i className="bi bi-dash"></i>
+        <div className="creation__stateContainer">
+          <h3>Extra states</h3>
+          {data.extraStates.map((state, index) => (
+            <div className="creation__state" key={index}>
+              <Input
+                id={index}
+                name="name"
+                placeholder="Name"
+                design="stateName"
+                value={state.name}
+                onChange={handleChange}
+              />
+              <Input
+                id={index}
+                name="code"
+                type="number"
+                placeholder="Code"
+                design="stateCode"
+                value={state.code}
+                onChange={handleChange}
+              />
+            </div>
+          ))}
+          <button onClick={addState}>
+            <i className="bi bi-plus-lg"></i>
           </button>
-        )}
-      </div>
+          {/* Only show button when there are extra states in the array */}
+          {data.extraStates.length && (
+            <button onClick={removeState} className="redbg ml">
+              <i className="bi bi-dash"></i>
+            </button>
+          )}
+        </div>
 
-      <button type="submit">Register</button>
-    </form>
+        <button type="submit">Register</button>
+      </form>
+    </>
   );
 };
