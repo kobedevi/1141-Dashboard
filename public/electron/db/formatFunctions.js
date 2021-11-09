@@ -26,8 +26,6 @@ const formatClientForDB = (data) => {
       name: state.name,
       code: parseInt(state.code),
     })),
-    onStart: parseInt(data.onStart),
-    onStop: parseInt(data.onStop),
     onSolved: [],
     currentState: 0,
     status: 0,

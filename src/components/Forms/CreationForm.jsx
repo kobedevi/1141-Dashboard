@@ -7,8 +7,6 @@ const defaultData = {
   ipAddress: "",
   port: "",
   extraStates: [],
-  onStart: "",
-  onStop: "",
 };
 
 export const CreationForm = ({ title, onSubmit, initialData }) => {
@@ -128,22 +126,6 @@ export const CreationForm = ({ title, onSubmit, initialData }) => {
             </button>
           )}
         </div>
-        <Input
-          name="onStart"
-          placeholder="On Start"
-          type="number"
-          design="creation__input"
-          value={data.onStart}
-          onChange={handleChange}
-        />
-        <Input
-          name="onStop"
-          type="number"
-          placeholder="On Stop"
-          design="creation__input"
-          value={data.onStop}
-          onChange={handleChange}
-        />
 
         <button type="submit">Register</button>
       </form>

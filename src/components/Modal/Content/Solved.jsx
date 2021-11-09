@@ -11,7 +11,7 @@ export const Solved = ({ closeModal }) => {
 
   return (
     <div className="creation">
-      <h2>Solve logic</h2>
+      <h2>OnSolve logic</h2>
       <hr />
       <SolvedForm onSubmit={onSubmit} />
     </div>

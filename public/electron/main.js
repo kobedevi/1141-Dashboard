@@ -1,11 +1,11 @@
-var osc = require("osc");
+const osc = require("osc");
 const appData = require("./appData");
 const { app, BrowserWindow } = require("electron");
 const { listener } = require("./api/listener");
 const registerFunctions = require("./api/registerFunctions");
 const { initDataBase } = require("./db/initDataBase");
+const ip = require("ip");
 
-require("dotenv").config();
 require("@electron/remote/main").initialize();
 
 const createWindow = () => {
@@ -30,8 +30,8 @@ const createWindow = () => {
 app.whenReady().then(() => {
   // Declare UDP Port and make globally available
   appData.udpPort = new osc.UDPPort({
-    localAddress: process.env.LOCAL_ADDRESS,
-    localPort: process.env.LOCAL_PORT,
+    localAddress: ip.address(),
+    localPort: 57111,
     metadata: true,
   });
 

@@ -6,6 +6,7 @@ export const Detail = () => {
   // Get data from context
   const { data } = useData();
 
+  console.log(data);
   return (
     <div className="detail__container">
       <Switch>
@@ -15,10 +16,14 @@ export const Detail = () => {
             <ClientDetail data={client} />
           </Route>
         ))}
-        <Route path="/">
-          {/* Redirect to first client in the array */}
-          <Redirect to={`/${data[0].id}`} />
-        </Route>
+        {data.length === 0 ? (
+          <Route path="/"></Route>
+        ) : (
+          <Route path="/">
+            {/* Redirect to first client in the array */}
+            <Redirect to={`/${data[0]?.id}`} />
+          </Route>
+        )}
       </Switch>
     </div>
   );

@@ -1,0 +1,29 @@
+.progress {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+  }
+
+  &__bar {
+    height: 30px;
+    width: 100%;
+
+    overflow: hidden;
+    border: 1px solid #222128;
+    border-radius: 10px;
+
+    background-color: white;
+  }
+
+  &__fill {
+    background-color: #5959ef;
+    height: 100%;
+  }
+
+  &__timer {
+    margin: 0;
+    text-align: center;
+  }
+}

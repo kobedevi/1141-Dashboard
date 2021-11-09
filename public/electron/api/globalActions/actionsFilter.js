@@ -8,20 +8,15 @@ module.exports = (action) => {
   switch (action) {
     case "start":
       console.log("Start game");
+      // Send active state to every client
       data.forEach((item) => {
-        sendMessage({ state: item.onStart, client: item.id });
-      });
-      break;
-
-    case "stop":
-      console.log("Stop game");
-      data.forEach((item) => {
-        sendMessage({ state: item.onStop, client: item.id });
+        sendMessage({ state: 1, client: item.id });
       });
       break;
 
     case "reset":
       console.log("Reset game");
+      // Send inactive state to every client
       data.forEach((item) => {
         sendMessage({ state: 0, client: item.id });
       });

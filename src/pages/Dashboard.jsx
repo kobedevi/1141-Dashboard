@@ -7,7 +7,6 @@ import { Progress } from "../components/Progress/Progress";
 export const Dashboard = () => {
   return (
     <Switch>
-      <Route path="/configure">test</Route>
       <Route path="/">
         <div className="interactive__container">
           <Progress />

@@ -10,7 +10,6 @@ yarn install
 
 ## TODO after install:
 
-- Edit .env file.
 - Edit dataBase.json file (remove '.example')
 
 ## Run application:
