@@ -5,6 +5,8 @@ const { listener } = require("./api/listener");
 const registerFunctions = require("./api/registerFunctions");
 const { initDataBase } = require("./db/initDataBase");
 const ip = require("ip");
+const isDev = require("electron-is-dev");
+const path = require("path");
 
 require("@electron/remote/main").initialize();
 
@@ -20,14 +22,21 @@ const createWindow = () => {
   });
 
   // Display the react app
-  appData.mainWindow.loadURL("http://localhost:3000");
+  appData.mainWindow.loadURL(
+    isDev
+      ? "http://localhost:3000"
+      : `file://${path.join(__dirname, "../../build/index.html")}`
+  );
 
   // Open devTools
-  appData.mainWindow.webContents.openDevTools();
+  // appData.mainWindow.webContents.openDevTools();
 };
 
 // When the app ir running
 app.whenReady().then(() => {
+  // Initialise the database
+  initDataBase(app);
+
   // Declare UDP Port and make globally available
   appData.udpPort = new osc.UDPPort({
     localAddress: ip.address(),
@@ -37,8 +46,6 @@ app.whenReady().then(() => {
 
   // Init listener for messages and errors
   listener();
-
-  initDataBase();
 
   // Register the actions
   registerFunctions();

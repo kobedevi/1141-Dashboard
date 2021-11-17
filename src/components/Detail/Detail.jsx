@@ -6,7 +6,6 @@ export const Detail = () => {
   // Get data from context
   const { data } = useData();
 
-  console.log(data);
   return (
     <div className="detail__container">
       <Switch>

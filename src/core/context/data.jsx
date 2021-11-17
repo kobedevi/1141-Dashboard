@@ -21,8 +21,6 @@ const DataProvider = ({ children }) => {
     });
   });
 
-  console.log("Rendered");
-
   return (
     <DataContext.Provider value={{ data }}>{children}</DataContext.Provider>
   );
