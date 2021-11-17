@@ -1,5 +1,5 @@
 {
-  "name": "2244-electron",
+  "name": "2341-dashboard",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -49,10 +49,7 @@
       "build/**/*",
       "node_modules/**/*",
       "package.json"
-    ],
-    "directories": {
-      "buildResources": "assets"
-    }
+    ]
   },
   "eslintConfig": {
     "extends": [
