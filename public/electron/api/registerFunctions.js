@@ -3,12 +3,7 @@
  */
 
 const { ipcMain } = require("electron");
-const {
-  saveClient,
-  editClient,
-  deleteClient,
-  saveOnSolved,
-} = require("../db/dbFunctions");
+const { saveClient, deleteClient, saveOnSolved } = require("../db/dbFunctions");
 const { formatGetClients } = require("../db/formatFunctions");
 const actionsFilter = require("./globalActions/actionsFilter");
 const { sendMessage } = require("./sendMessage");
