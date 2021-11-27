@@ -3,10 +3,11 @@
  */
 
 const { ipcMain } = require("electron");
-const { saveClient, deleteClient, saveOnSolved } = require("../db/dbFunctions");
+const { saveClient, deleteClient, saveOnState } = require("../db/dbFunctions");
 const { formatGetClients } = require("../db/formatFunctions");
 const actionsFilter = require("./globalActions/actionsFilter");
 const { sendMessage } = require("./sendMessage");
+const { sendTip } = require("./sendTip");
 
 module.exports = () => {
   ipcMain.on("send", (e, args) => sendMessage(args));
@@ -16,5 +17,6 @@ module.exports = () => {
   });
   ipcMain.on("saveClient", (e, args) => saveClient(args));
   ipcMain.on("deleteClient", (e, args) => deleteClient(args));
-  ipcMain.on("saveOnSolved", (e, args) => saveOnSolved(args));
+  ipcMain.on("saveOnState", (e, args) => saveOnState(args));
+  ipcMain.on("sendTip", (e, args) => sendTip(args));
 };

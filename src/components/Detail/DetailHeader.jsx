@@ -16,7 +16,7 @@ const formatData = (data) => {
 export const DetailHeader = ({ data }) => {
   const { ipcRenderer } = useElectron();
 
-  const [solveVisible, setSolveVisible] = useState(false);
+  const [stateVisible, setStateVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState(false);
   const [editVisible, setEditVisible] = useState(false);
 
@@ -24,8 +24,8 @@ export const DetailHeader = ({ data }) => {
     setEditVisible(!editVisible);
   };
 
-  const toggleSolveVisible = () => {
-    setSolveVisible(!solveVisible);
+  const toggleStateVisible = () => {
+    setStateVisible(!stateVisible);
   };
 
   const toggleDeleteVisible = () => {
@@ -47,7 +47,7 @@ export const DetailHeader = ({ data }) => {
       <div className="detail__header">
         <h1>{`${data.id} | ${data.puzzleName}`}</h1>
         <div>
-          <button onClick={toggleSolveVisible}>
+          <button onClick={toggleStateVisible}>
             <i className="bi bi-check-all"></i>
           </button>
           <button className="ml" onClick={toggleEditVisible}>
@@ -71,9 +71,9 @@ export const DetailHeader = ({ data }) => {
         </Modal>
       )}
 
-      {solveVisible && (
-        <Modal onClose={toggleSolveVisible}>
-          <Solved closeModal={toggleSolveVisible} />
+      {stateVisible && (
+        <Modal onClose={toggleStateVisible}>
+          <Solved closeModal={toggleStateVisible} />
         </Modal>
       )}
 

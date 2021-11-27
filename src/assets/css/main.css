@@ -364,6 +364,10 @@ main {
   margin-left: 10px;
 }
 
+.me {
+  margin-bottom: 10px;
+}
+
 .solved {
   border: 2px solid #27e8a7 !important;
   box-shadow: #27e8a7 0px 0px 10px;
@@ -718,45 +722,49 @@ button:active {
   border-left: none;
 }
 
-.solve__form {
+.onState__form {
   display: grid;
   grid-template-rows: auto 40px;
   gap: 10px;
 }
-.solve__form select {
+.onState__form select {
   color: black;
 }
-.solve__stateContainer {
+.onState__optionsContainer {
+  max-height: 75vh;
+  overflow: scroll;
+}
+.onState__stateContainer {
   padding: 10px;
   background-color: #ffffff;
   border-radius: 5px;
 }
-.solve__stateContainer h3 {
+.onState__stateContainer h3 {
   color: black;
   margin: 0;
   margin-bottom: 5px;
 }
-.solve__stateContainer button {
+.onState__stateContainer button {
   width: 40px;
 }
-.solve__stateContainer button i {
+.onState__stateContainer button i {
   font-size: 20px;
 }
-.solve__state {
+.onState__state {
   display: flex;
   height: 40px;
   margin-bottom: 10px;
 }
-.solve__state select {
+.onState__state select {
   border: 1px solid #222128;
   color: black;
   padding-left: 10px;
 }
-.solve__state .stateName {
+.onState__state .stateName {
   width: 100%;
   border-radius: 5px 0 0 5px;
 }
-.solve__state .stateCode {
+.onState__state .stateCode {
   width: 100px;
   border-radius: 0 5px 5px 0;
   border-left: none;

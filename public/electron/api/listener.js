@@ -1,18 +1,15 @@
 const appData = require("../appData");
 const { saveState } = require("../db/dbFunctions");
-const { onSolved } = require("./puzzleLogic/onSolved");
+const { onState } = require("./puzzleLogic/onState");
 
 const listener = () => {
   // Listen for incoming OSC messages.
   appData.udpPort.on("message", function (oscMsg, timeTag, info) {
-    console.log("An OSC message just arrived!", oscMsg);
+    // console.log("An OSC message just arrived!", oscMsg);
     // console.log("Remote info is: ", info);
 
     saveState(oscMsg);
-
-    if (oscMsg.args[0].value === 100) {
-      onSolved(oscMsg);
-    }
+    onState(oscMsg);
   });
 
   // Error handling

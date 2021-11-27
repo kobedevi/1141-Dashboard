@@ -127,7 +127,7 @@
   }
 }
 
-.solve {
+.onState {
   &__form {
     display: grid;
     grid-template-rows: auto 40px;
@@ -136,6 +136,11 @@
     select {
       color: black;
     }
+  }
+
+  &__optionsContainer {
+    max-height: 75vh;
+    overflow: scroll;
   }
 
   &__stateContainer {

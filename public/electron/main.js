@@ -29,7 +29,7 @@ const createWindow = () => {
   );
 
   // Open devTools
-  // appData.mainWindow.webContents.openDevTools();
+  appData.mainWindow.webContents.openDevTools();
 };
 
 // When the app ir running
