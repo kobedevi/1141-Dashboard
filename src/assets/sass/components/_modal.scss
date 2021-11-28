@@ -64,6 +64,10 @@
   max-height: 70vh;
   overflow-y: scroll;
 
+  &--default {
+    grid-template-rows: 40px 40px auto !important;
+  }
+
   &::-webkit-scrollbar {
     display: none;
   }

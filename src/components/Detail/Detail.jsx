@@ -9,8 +9,13 @@ export const Detail = () => {
   return (
     <div className="detail__container">
       <Switch>
+        {/* Default screen client */}
+        <Route path={`/Client-00`}>
+          <ClientDetail data={data[0]} noHeader />
+        </Route>
+
         {/* Create a separate component for each client*/}
-        {data.map((client, index) => (
+        {data.slice(1).map((client, index) => (
           <Route path={`/${client.id}`} key={index}>
             <ClientDetail data={client} />
           </Route>

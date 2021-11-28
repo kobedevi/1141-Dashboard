@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useElectron from "../../core/hooks/useElectron";
 import { CreationForm } from "../Forms/CreationForm";
+import { DefaultClientForm } from "../Forms/DefaultClientForm";
 import { Confirmation } from "../Modal/Content/Confirmation";
 import { OnState } from "../Modal/Content/OnState";
 import { Modal } from "../Modal/Modal";
@@ -13,12 +14,13 @@ const formatData = (data) => {
   };
 };
 
-export const DetailHeader = ({ data }) => {
+export const DetailHeader = ({ data, noHeader }) => {
   const { ipcRenderer } = useElectron();
 
   const [stateVisible, setStateVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState(false);
   const [editVisible, setEditVisible] = useState(false);
+  const [defaultHidden, setDefaultHidden] = useState(true);
 
   const toggleEditVisible = () => {
     setEditVisible(!editVisible);
@@ -41,6 +43,33 @@ export const DetailHeader = ({ data }) => {
     ipcRenderer.send("saveClient", editedData);
     toggleEditVisible();
   };
+
+  const toggleModal = () => {
+    setDefaultHidden(!defaultHidden);
+  };
+
+  if (noHeader) {
+    return (
+      <>
+        <div className="detail__header">
+          <h1>{`${data.id} | ${data.puzzleName}`}</h1>
+          <div>
+            <button onClick={toggleModal}>
+              <i className="bi bi-gear-fill"></i>
+            </button>
+          </div>
+        </div>
+
+        {defaultHidden ? null : (
+          <Modal onClose={toggleModal}>
+            <div className="creation">
+              <DefaultClientForm closeModal={toggleModal} />
+            </div>
+          </Modal>
+        )}
+      </>
+    );
+  }
 
   return (
     <>

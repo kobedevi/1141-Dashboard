@@ -38,7 +38,7 @@ const formatClientForDB = (data) => {
   return {
     ...data,
     id: `Client-${data.id}`,
-    port: parseInt(data.port),
+    port: data.port !== "" ? parseInt(data.port) : 0,
     extraStates: data.extraStates.map((state) => ({
       name: state.name,
       code: parseInt(state.code),

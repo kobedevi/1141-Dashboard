@@ -10,7 +10,7 @@ export const SidebarFooter = (params) => {
   return (
     <div className="client__footer">
       <button className="client__item" onClick={handleClick}>
-        Refresh <i className="bi bi-exclamation-circle-fill"></i>
+        Refresh <i className="bi bi-arrow-clockwise"></i>
       </button>
     </div>
   );

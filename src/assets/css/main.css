@@ -638,7 +638,7 @@ button:active {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
 }
 .progress__bar {
   height: 30px;
@@ -655,6 +655,18 @@ button:active {
 .progress__timer {
   margin: 0;
   text-align: center;
+}
+.progress__button {
+  height: 30px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  padding: 0;
+}
+.progress__button i:hover {
+  color: #cbcbcb;
 }
 
 .modal {
@@ -707,6 +719,9 @@ button:active {
   row-gap: 10px;
   max-height: 70vh;
   overflow-y: scroll;
+}
+.creation-scroll--default {
+  grid-template-rows: 40px 40px auto !important;
 }
 .creation-scroll::-webkit-scrollbar {
   display: none;

@@ -10,7 +10,16 @@ const initDataBase = (app) => {
       : new Config(app.getPath("userData") + "/dataBase", true, false, "/")
   );
 
-  appData.dataBase.push("/clients", {}, false);
+  appData.dataBase.push(
+    "/clients/Client-00",
+    {
+      id: "Client-00",
+      puzzleName: "Tip-screen",
+      currentState: 0,
+      status: 0,
+    },
+    false
+  );
 };
 
 module.exports = {
