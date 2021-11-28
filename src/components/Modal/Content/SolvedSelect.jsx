@@ -2,7 +2,14 @@ import { Select } from "../../Select";
 
 const defaultValues = [0, 1, 100];
 
-export const SolvedSelect = ({ values, name, code, id, onChange }) => {
+export const SolvedSelect = ({
+  values,
+  name,
+  code,
+  arrayId,
+  stateId,
+  onChange,
+}) => {
   let clientStates = [];
 
   const idIndex = values.findIndex((x) => x.id === name);
@@ -12,13 +19,14 @@ export const SolvedSelect = ({ values, name, code, id, onChange }) => {
   });
 
   return (
-    <div className="solve__state">
+    <div className="onState__state">
       <Select
         design="stateName"
         values={values.map((client) => client.id)}
         selected={name}
         name="id"
-        id={id}
+        arrayId={arrayId}
+        stateId={stateId}
         onChange={onChange}
       />
       <Select
@@ -26,7 +34,8 @@ export const SolvedSelect = ({ values, name, code, id, onChange }) => {
         values={[...defaultValues, ...clientStates]}
         selected={code}
         name="code"
-        id={id}
+        arrayId={arrayId}
+        stateId={stateId}
         onChange={onChange}
       />
     </div>

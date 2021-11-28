@@ -7,26 +7,46 @@ const sortDataById = (x, y) => {
 
 const formatGetClients = () => {
   // Get data from database
-  const data = appData.dataBase.getData("/clients");
+  const data = appData.dataBase.getData("/");
 
   // Change data to an array of objects
-  const arr = Object.values(data);
+  const clients = Object.values(data.clients);
 
-  // Sort alphabetically
-  return arr.sort(sortDataById);
+  // Sort alphabetically and send
+  return {
+    ...data,
+    clients: clients.sort(sortDataById),
+  };
 };
 
 // Manipulate data before storing in the database
 const formatClientForDB = (data) => {
+  // Create / reconfigure standard onState objects
+  let onStateData = {
+    0: [...(data.onState?.["0"] || [])],
+    1: [...(data.onState?.["1"] || [])],
+    100: [...(data.onState?.["100"] || [])],
+  };
+
+  // Add / update onState objects for every extraState
+  data.extraStates.map(
+    (state) =>
+      (onStateData = {
+        ...onStateData,
+        [state.code]: [...(data.onState?.[state.code] || [])],
+      })
+  );
+
+  // Return formatted data
   return {
     ...data,
     id: `Client-${data.id}`,
-    port: parseInt(data.port),
+    port: data.port !== "" ? parseInt(data.port) : 0,
     extraStates: data.extraStates.map((state) => ({
       name: state.name,
       code: parseInt(state.code),
     })),
-    onSolved: [],
+    onState: onStateData,
     currentState: 0,
     status: 0,
   };

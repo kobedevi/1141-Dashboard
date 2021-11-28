@@ -15,11 +15,11 @@ const DataProvider = ({ children }) => {
 
   // Register listener after render
   useEffect(() => {
-    ipcRenderer.once("dataChange", (event, arg) => {
+    ipcRenderer.on("dataChange", (event, arg) => {
       console.log("Got data");
       setData(arg);
     });
-  });
+  }, [ipcRenderer]);
 
   return (
     <DataContext.Provider value={{ data }}>{children}</DataContext.Provider>

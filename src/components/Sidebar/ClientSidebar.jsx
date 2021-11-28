@@ -1,5 +1,6 @@
 import useData from "../../core/hooks/useData";
 import { ClientItem } from "./ClientItem";
+import { SidebarFooter } from "./SidebarFooter";
 import { SidebarHeader } from "./SidebarHeader";
 
 export const ClientSidebar = () => {
@@ -9,9 +10,11 @@ export const ClientSidebar = () => {
   return (
     <div className="client__container">
       <SidebarHeader />
-      {data.map((client, index) => (
+      <ClientItem data={data.clients[0]} />
+      {data.clients.slice(1).map((client, index) => (
         <ClientItem data={client} key={index} />
       ))}
+      <SidebarFooter />
     </div>
   );
 };

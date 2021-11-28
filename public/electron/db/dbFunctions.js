@@ -19,6 +19,13 @@ const saveClient = (data) => {
   sendClients();
 };
 
+const setPlayers = (players) => {
+  appData.dataBase.push(`/players`, players);
+
+  // Send the updated data
+  sendClients();
+};
+
 // Delete client
 const deleteClient = (client) => {
   appData.dataBase.delete(`/clients/${client}`);
@@ -27,8 +34,8 @@ const deleteClient = (client) => {
   sendClients();
 };
 
-const saveOnSolved = ({ options, currentClient }) => {
-  appData.dataBase.push(`/clients${currentClient}/onSolved`, options);
+const saveOnState = ({ onState, currentClient }) => {
+  appData.dataBase.push(`/clients${currentClient}/onState`, onState);
 
   // Send the updated data
   sendClients();
@@ -54,5 +61,6 @@ module.exports = {
   saveClient,
   deleteClient,
   saveState,
-  saveOnSolved,
+  saveOnState,
+  setPlayers,
 };

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import useElectron from "../../core/hooks/useElectron";
 import { CreationForm } from "../Forms/CreationForm";
+import { DefaultClientForm } from "../Forms/DefaultClientForm";
 import { Confirmation } from "../Modal/Content/Confirmation";
-import { Solved } from "../Modal/Content/Solved";
+import { OnState } from "../Modal/Content/OnState";
 import { Modal } from "../Modal/Modal";
 
 // Delete "Client-" from data.id
@@ -13,19 +14,20 @@ const formatData = (data) => {
   };
 };
 
-export const DetailHeader = ({ data }) => {
+export const DetailHeader = ({ data, noHeader }) => {
   const { ipcRenderer } = useElectron();
 
-  const [solveVisible, setSolveVisible] = useState(false);
+  const [stateVisible, setStateVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState(false);
   const [editVisible, setEditVisible] = useState(false);
+  const [defaultHidden, setDefaultHidden] = useState(true);
 
   const toggleEditVisible = () => {
     setEditVisible(!editVisible);
   };
 
-  const toggleSolveVisible = () => {
-    setSolveVisible(!solveVisible);
+  const toggleStateVisible = () => {
+    setStateVisible(!stateVisible);
   };
 
   const toggleDeleteVisible = () => {
@@ -42,12 +44,39 @@ export const DetailHeader = ({ data }) => {
     toggleEditVisible();
   };
 
+  const toggleModal = () => {
+    setDefaultHidden(!defaultHidden);
+  };
+
+  if (noHeader) {
+    return (
+      <>
+        <div className="detail__header">
+          <h1>{`${data.id} | ${data.puzzleName}`}</h1>
+          <div>
+            <button onClick={toggleModal}>
+              <i className="bi bi-gear-fill"></i>
+            </button>
+          </div>
+        </div>
+
+        {defaultHidden ? null : (
+          <Modal onClose={toggleModal}>
+            <div className="creation">
+              <DefaultClientForm closeModal={toggleModal} />
+            </div>
+          </Modal>
+        )}
+      </>
+    );
+  }
+
   return (
     <>
       <div className="detail__header">
         <h1>{`${data.id} | ${data.puzzleName}`}</h1>
         <div>
-          <button onClick={toggleSolveVisible}>
+          <button onClick={toggleStateVisible}>
             <i className="bi bi-check-all"></i>
           </button>
           <button className="ml" onClick={toggleEditVisible}>
@@ -66,14 +95,15 @@ export const DetailHeader = ({ data }) => {
               title={`Edit ${data.id}`}
               initialData={formatData(data)}
               onSubmit={handleEdit}
+              edit
             />
           </div>
         </Modal>
       )}
 
-      {solveVisible && (
-        <Modal onClose={toggleSolveVisible}>
-          <Solved closeModal={toggleSolveVisible} />
+      {stateVisible && (
+        <Modal onClose={toggleStateVisible}>
+          <OnState closeModal={toggleStateVisible} />
         </Modal>
       )}
 
