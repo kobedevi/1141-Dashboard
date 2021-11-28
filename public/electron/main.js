@@ -7,6 +7,7 @@ const { initDataBase } = require("./db/initDataBase");
 const ip = require("ip");
 const isDev = require("electron-is-dev");
 const path = require("path");
+const { checkLive } = require("./api/globalActions/checkLive");
 
 require("@electron/remote/main").initialize();
 
@@ -56,6 +57,9 @@ app.whenReady().then(() => {
 
   // Create the window
   createWindow();
+
+  // Check which clients are live at startup
+  checkLive();
 
   app.on("activate", () => {
     // On macOS it's common to re-create a window in the app when the

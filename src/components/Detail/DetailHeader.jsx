@@ -2,7 +2,7 @@ import { useState } from "react";
 import useElectron from "../../core/hooks/useElectron";
 import { CreationForm } from "../Forms/CreationForm";
 import { Confirmation } from "../Modal/Content/Confirmation";
-import { Solved } from "../Modal/Content/Solved";
+import { OnState } from "../Modal/Content/OnState";
 import { Modal } from "../Modal/Modal";
 
 // Delete "Client-" from data.id
@@ -66,6 +66,7 @@ export const DetailHeader = ({ data }) => {
               title={`Edit ${data.id}`}
               initialData={formatData(data)}
               onSubmit={handleEdit}
+              edit
             />
           </div>
         </Modal>
@@ -73,7 +74,7 @@ export const DetailHeader = ({ data }) => {
 
       {stateVisible && (
         <Modal onClose={toggleStateVisible}>
-          <Solved closeModal={toggleStateVisible} />
+          <OnState closeModal={toggleStateVisible} />
         </Modal>
       )}
 

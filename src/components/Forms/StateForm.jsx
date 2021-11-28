@@ -62,7 +62,7 @@ export const StateForm = ({ onSubmit }) => {
     });
   };
 
-  // TODO HandleChange Per state
+  // HandleChange Per state
   const handleChange = (e) => {
     const stateId = e.target.dataset.stateid;
     const arrayId = e.target.dataset.arrayid;
@@ -114,7 +114,7 @@ export const StateForm = ({ onSubmit }) => {
             </button>
 
             {/* Only show button when there are extra options in the array */}
-            {item[1].length && (
+            {item[1].length !== 0 && (
               <button
                 data-stateid={item[0]}
                 onClick={removeOption}

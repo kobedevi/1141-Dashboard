@@ -1,7 +1,7 @@
 import useElectron from "../../../core/hooks/useElectron";
 import { StateForm } from "../../Forms/StateForm";
 
-export const Solved = ({ closeModal }) => {
+export const OnState = ({ closeModal }) => {
   const { ipcRenderer } = useElectron();
 
   const onSubmit = (data) => {

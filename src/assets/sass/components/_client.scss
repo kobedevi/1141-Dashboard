@@ -10,6 +10,10 @@
     background-color: #1f2a40;
 
     overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__header {
@@ -22,6 +26,7 @@
     margin: 3px 10px 10px 10px;
 
     border-bottom: 1px solid grey;
+    background-color: #1f2a40;
 
     h2 {
       margin: 0;
@@ -40,6 +45,28 @@
       }
     }
   }
+
+  // &__footer {
+  //   display: grid;
+  //   background-color: #1f2a40;
+  //   position: fixed;
+  //   bottom: 0px;
+  //   border-top: 1px solid #222128;
+
+  //   button {
+  //     height: 40px;
+  //     background-color: #5959ef;
+  //     color: white;
+  //     border-radius: 5px;
+  //     border: 1px solid #222128;
+  //     cursor: pointer;
+  //     margin: 5px 10px;
+
+  //     i {
+  //       font-size: 18px;
+  //     }
+  //   }
+  // }
 
   &__item {
     display: flex;
@@ -75,7 +102,7 @@
     }
   }
 
-  &__configure {
+  &__footer {
     position: sticky;
     bottom: 0;
     left: 0;
@@ -94,7 +121,7 @@
 
     & .client__item {
       width: 100%;
-      margin: 10px 10px !important;
+      margin: 7px 10px !important;
       background-color: #5959ef;
       border: 1px solid #222128;
     }

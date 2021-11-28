@@ -6,6 +6,13 @@ import { ElectronProvider } from "./core/context/electron";
 import { DataProvider } from "./core/context/data";
 import { ClientSidebar } from "./components/Sidebar/ClientSidebar";
 
+// TODO Add permanent tipScreen client
+// TODO Add functionality to set amount of players
+// TODO Form validation
+
+// TODO Merge timer functions
+// TODO Merge Camera function
+
 function App() {
   return (
     // Make ipcRenderer available everywhere via contextProvider

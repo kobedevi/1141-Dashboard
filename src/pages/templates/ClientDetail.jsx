@@ -1,4 +1,5 @@
 import { DefaultActions } from "../../components/Detail/DefaultActions";
+import { DefaultTips } from "../../components/Detail/DefaultTips";
 import { DetailHeader } from "../../components/Detail/DetailHeader";
 import { StateButton } from "../../components/Detail/StateButton";
 
@@ -16,7 +17,11 @@ export const ClientDetail = ({ data }) => {
           data.extraStates.map((item, index) => (
             <StateButton stateData={item} clientData={data} key={index} />
           ))}
+
+        {/* TODO If the client has standardTips display them */}
       </div>
+
+      {data.tips.length !== 0 && <DefaultTips tips={data.tips} />}
     </>
   );
 };
