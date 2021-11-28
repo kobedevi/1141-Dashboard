@@ -668,8 +668,15 @@ button:active {
   cursor: pointer;
   font-size: 25px;
   padding: 0;
+  min-width: 50px;
 }
-.progress__button i:hover {
+.progress__button p {
+  margin: 0;
+}
+.progress__button p:hover {
+  color: #cbcbcb;
+}
+.progress__button p:hover i {
   color: #cbcbcb;
 }
 

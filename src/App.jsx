@@ -6,8 +6,6 @@ import { ElectronProvider } from "./core/context/electron";
 import { DataProvider } from "./core/context/data";
 import { ClientSidebar } from "./components/Sidebar/ClientSidebar";
 
-// TODO Add functionality to set amount of players
-
 // TODO Merge timer functions
 // TODO Merge Camera function
 

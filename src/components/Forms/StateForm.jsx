@@ -1,8 +1,6 @@
 import { useState } from "react";
 import useData from "../../core/hooks/useData";
 import { SolvedSelect } from "../Modal/Content/SolvedSelect";
-import * as yup from "yup";
-import { getValidationErrors } from "../../core/utils/Validation";
 
 const initialData = {
   onState: {},
@@ -13,13 +11,13 @@ export const StateForm = ({ onSubmit }) => {
   const { data: clients } = useData();
 
   // Find the index of the current client in the clients array
-  const idIndex = clients.findIndex(
+  const idIndex = clients.clients.findIndex(
     (x) => x.id === window.location.pathname.substr(1)
   );
 
   // Fetch previousdata
   const previousData = {
-    onState: clients[idIndex].onState,
+    onState: clients.clients[idIndex].onState,
   };
 
   // Merge initialData with previousData and add to state
@@ -104,7 +102,7 @@ export const StateForm = ({ onSubmit }) => {
             {item[1].map((subItem, index) => (
               <SolvedSelect
                 key={index}
-                values={clients}
+                values={clients.clients}
                 name={subItem.id}
                 code={subItem.code}
                 onChange={handleChange}

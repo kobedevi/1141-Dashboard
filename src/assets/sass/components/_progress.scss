@@ -38,9 +38,17 @@
     font-size: 25px;
     padding: 0;
 
-    i {
+    min-width: 50px;
+
+    p {
+      margin: 0;
+
       &:hover {
         color: #cbcbcb;
+
+        i {
+          color: #cbcbcb;
+        }
       }
     }
   }

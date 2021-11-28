@@ -38,7 +38,7 @@ export const DefaultClientForm = ({ closeModal }) => {
 
   const [values, setValues] = useState({
     ...defaultData,
-    ...formatData(data[0]),
+    ...formatData(data.clients[0]),
   });
 
   const [errors, setErrors] = useState({});

@@ -11,12 +11,17 @@ const initDataBase = (app) => {
   );
 
   appData.dataBase.push(
-    "/clients/Client-00",
+    "/",
     {
-      id: "Client-00",
-      puzzleName: "Tip-screen",
-      currentState: 0,
-      status: 0,
+      players: 4,
+      clients: {
+        "Client-00": {
+          id: "Client-00",
+          puzzleName: "Tip-screen",
+          currentState: 0,
+          status: 1,
+        },
+      },
     },
     false
   );

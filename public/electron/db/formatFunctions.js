@@ -7,13 +7,16 @@ const sortDataById = (x, y) => {
 
 const formatGetClients = () => {
   // Get data from database
-  const data = appData.dataBase.getData("/clients");
+  const data = appData.dataBase.getData("/");
 
   // Change data to an array of objects
-  const arr = Object.values(data);
+  const clients = Object.values(data.clients);
 
-  // Sort alphabetically
-  return arr.sort(sortDataById);
+  // Sort alphabetically and send
+  return {
+    ...data,
+    clients: clients.sort(sortDataById),
+  };
 };
 
 // Manipulate data before storing in the database
