@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Input } from "../Input";
+import * as yup from "yup";
+import { getValidationErrors } from "../../core/utils/Validation";
 
 const defaultData = {
   id: "",
@@ -10,11 +12,28 @@ const defaultData = {
   tips: [],
 };
 
+const schema = yup.object().shape({
+  id: yup.string().required(),
+  puzzleName: yup.string().required(),
+  ipAddress: yup.string().required(),
+  port: yup.string().required(),
+  extraStates: yup
+    .array()
+    .of(
+      yup
+        .object()
+        .shape({ name: yup.string().required(), code: yup.string().required() })
+    ),
+  tips: yup.array().of(yup.string().required()),
+});
+
 export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
   const [data, setData] = useState({
     ...defaultData,
     ...initialData,
   });
+
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     if (["name", "code"].includes(e.target.name)) {
@@ -83,7 +102,16 @@ export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(data);
+
+    schema
+      .validate(data, { abortEarly: false })
+      .then(() => {
+        onSubmit(data);
+      })
+      .catch((err) => {
+        console.log(getValidationErrors(err));
+        setErrors(getValidationErrors(err));
+      });
   };
 
   return (
@@ -100,6 +128,7 @@ export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
             value={data.id}
             onChange={handleChange}
             disabled={initialData ? true : false}
+            error={errors.id}
           />
           <Input
             name="puzzleName"
@@ -107,6 +136,7 @@ export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
             design="creation__input"
             value={data.puzzleName}
             onChange={handleChange}
+            error={errors.puzzleName}
           />
           <Input
             name="ipAddress"
@@ -114,6 +144,7 @@ export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
             design="creation__input"
             value={data.ipAddress}
             onChange={handleChange}
+            error={errors.ipAddress}
           />
           <Input
             name="port"
@@ -122,6 +153,7 @@ export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
             design="creation__input"
             value={data.port}
             onChange={handleChange}
+            error={errors.port}
           />
 
           <div className="creation__stateContainer">
@@ -135,6 +167,7 @@ export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
                   design="stateName"
                   value={state.name}
                   onChange={handleChange}
+                  error={errors[`extraStates[${index}].name`]}
                 />
                 <Input
                   id={index}
@@ -144,6 +177,7 @@ export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
                   design="stateCode"
                   value={state.code}
                   onChange={handleChange}
+                  error={errors[`extraStates[${index}].code`]}
                 />
               </div>
             ))}
@@ -169,6 +203,7 @@ export const CreationForm = ({ title, onSubmit, initialData, edit }) => {
                   design="tips"
                   value={tip}
                   onChange={handleChange}
+                  error={errors[`tips[${index}]`]}
                 />
               </div>
             ))}

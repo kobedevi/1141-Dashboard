@@ -1,6 +1,8 @@
 import { useState } from "react";
 import useData from "../../core/hooks/useData";
 import { SolvedSelect } from "../Modal/Content/SolvedSelect";
+import * as yup from "yup";
+import { getValidationErrors } from "../../core/utils/Validation";
 
 const initialData = {
   onState: {},
@@ -86,6 +88,7 @@ export const StateForm = ({ onSubmit }) => {
   // Send data to main process
   const handleSubmit = (e) => {
     e.preventDefault();
+
     onSubmit(data);
   };
 

@@ -2,12 +2,26 @@ import { useState } from "react";
 import useData from "../../core/hooks/useData";
 import useElectron from "../../core/hooks/useElectron";
 import { Input } from "../Input";
+import * as yup from "yup";
+import { getValidationErrors } from "../../core/utils/Validation";
 
 const defaultData = {
   ipAddress: "",
   port: "",
   extraStates: [],
 };
+
+const schema = yup.object().shape({
+  ipAddress: yup.string().required(),
+  port: yup.string().required(),
+  extraStates: yup
+    .array()
+    .of(
+      yup
+        .object()
+        .shape({ name: yup.string().required(), code: yup.string().required() })
+    ),
+});
 
 // Delete "Client-" from data.id
 const formatData = (data) => {
@@ -26,6 +40,8 @@ export const DefaultClientForm = ({ closeModal }) => {
     ...defaultData,
     ...formatData(data[0]),
   });
+
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     if (["name", "code"].includes(e.target.name)) {
@@ -66,8 +82,16 @@ export const DefaultClientForm = ({ closeModal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    ipcRenderer.send("saveClient", values);
-    closeModal();
+    schema
+      .validate(values, { abortEarly: false })
+      .then(() => {
+        ipcRenderer.send("saveClient", values);
+        closeModal();
+      })
+      .catch((err) => {
+        console.log(getValidationErrors(err));
+        setErrors(getValidationErrors(err));
+      });
   };
 
   return (
@@ -82,6 +106,7 @@ export const DefaultClientForm = ({ closeModal }) => {
             design="creation__input"
             value={values.ipAddress}
             onChange={handleChange}
+            error={errors.ipAddress}
           />
           <Input
             name="port"
@@ -90,6 +115,7 @@ export const DefaultClientForm = ({ closeModal }) => {
             design="creation__input"
             value={values.port}
             onChange={handleChange}
+            error={errors.port}
           />
 
           <div className="creation__stateContainer">
@@ -103,6 +129,7 @@ export const DefaultClientForm = ({ closeModal }) => {
                   design="stateName"
                   value={state.name}
                   onChange={handleChange}
+                  error={errors[`extraStates[${index}].name`]}
                 />
                 <Input
                   id={index}
@@ -112,6 +139,7 @@ export const DefaultClientForm = ({ closeModal }) => {
                   design="stateCode"
                   value={state.code}
                   onChange={handleChange}
+                  error={errors[`extraStates[${index}].code`]}
                 />
               </div>
             ))}

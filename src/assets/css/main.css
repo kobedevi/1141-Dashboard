@@ -391,6 +391,10 @@ button:active {
   transform: scale(100%);
 }
 
+.error {
+  border: 2px solid red !important;
+}
+
 .client__container {
   position: relative;
   height: 100vh;

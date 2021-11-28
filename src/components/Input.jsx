@@ -7,12 +7,13 @@ export const Input = ({
   name,
   id,
   disabled,
+  error,
 }) => {
   return (
     <input
       id={id}
       name={name}
-      className={design}
+      className={`${design} ${error ? "error" : ""}`}
       type={type}
       placeholder={placeholder}
       onChange={onChange}
