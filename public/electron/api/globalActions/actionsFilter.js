@@ -1,3 +1,4 @@
+const appData = require("../../appData");
 const { formatGetClients } = require("../../db/formatFunctions");
 const { sendMessage } = require("../sendMessage");
 
@@ -9,21 +10,36 @@ module.exports = (action) => {
     case "start":
       console.log("Start game");
       // Send active state to every client
-      data.forEach((item) => {
+      data.clients.forEach((item) => {
         sendMessage({ state: 1, client: item.id });
       });
+
+      appData.mainWindow.webContents.send("timer", "start");
       break;
 
     case "reset":
       console.log("Reset game");
       // Send inactive state to every client
-      data.forEach((item) => {
+      data.clients.forEach((item) => {
         sendMessage({ state: 0, client: item.id });
       });
+
+      appData.mainWindow.webContents.send("timer", "stop");
       break;
 
     case "pause":
-      console.log("Pause game");
+      console.log("Pause the timer");
+      appData.mainWindow.webContents.send("timer", "pause");
+      break;
+
+    case "add":
+      console.log("Add 5 minutes");
+      appData.mainWindow.webContents.send("timer", "add");
+      break;
+
+    case "sub":
+      console.log("Subtract 5 minutes");
+      appData.mainWindow.webContents.send("timer", "sub");
       break;
 
     case "camera":

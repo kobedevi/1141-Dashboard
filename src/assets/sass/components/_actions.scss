@@ -1,7 +1,7 @@
 .actions {
   &__container {
     display: grid;
-    grid-template-columns: auto auto auto 100px;
+    grid-template-columns: 0.5fr 1fr 1fr 100px;
     align-items: center;
     gap: 10px;
   }
@@ -35,6 +35,40 @@
       i {
         font-size: 50px;
       }
+    }
+  }
+}
+
+.timerActions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "header header";
+
+  gap: 0 10px;
+  height: 90%;
+  border-radius: 5px;
+
+  &__top {
+    grid-area: header;
+    margin: 0;
+  }
+
+  &__btn {
+    border-radius: 5px;
+    border: none;
+    font-size: 30px;
+
+    &--pause {
+      @extend .timerActions__btn;
+      background-color: #feb019;
+    }
+    &--add {
+      @extend .timerActions__btn;
+      background-color: #42bf50;
+    }
+    &--sub {
+      @extend .timerActions__btn;
+      background-color: #f25b5b;
     }
   }
 }

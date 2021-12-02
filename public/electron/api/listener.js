@@ -6,8 +6,8 @@ const { sendPlayers } = require("./sendPlayers");
 const listener = () => {
   // Listen for incoming OSC messages.
   appData.udpPort.on("message", function (oscMsg, timeTag, info) {
-    // console.log("An OSC message just arrived!", oscMsg);
-    // console.log("Remote info is: ", info);
+    console.log("An OSC message just arrived!", oscMsg);
+    console.log("Remote info is: ", info);
 
     // Check if client is requesting playercount
     if (oscMsg.address === "/getPlayers") {

@@ -31,4 +31,5 @@ module.exports = () => {
   ipcMain.on("sendTip", (e, args) => sendTip(args));
   ipcMain.on("checkLive", (e, args) => checkLive());
   ipcMain.on("setPlayers", (e, args) => setPlayers(args));
+  ipcMain.on("endGame", (e, args) => console.log("game ended"));
 };

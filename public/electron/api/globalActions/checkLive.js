@@ -5,6 +5,8 @@ const { sendClients } = require("../../db/dbFunctions");
 const checkLive = async () => {
   const clients = appData.dataBase.getData(`/clients`);
 
+  // TODO Promise.all();
+
   // Await the whole loop before continuing
   for await (const client of Object.values(clients)) {
     const res = await ping.promise.probe(client.ipAddress);

@@ -539,7 +539,7 @@ button:active {
 
 .actions__container {
   display: grid;
-  grid-template-columns: auto auto auto 100px;
+  grid-template-columns: 0.5fr 1fr 1fr 100px;
   align-items: center;
   gap: 10px;
 }
@@ -569,6 +569,33 @@ button:active {
 }
 .actions__btn--camera i {
   font-size: 50px;
+}
+
+.timerActions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "header header";
+  gap: 0 10px;
+  height: 90%;
+  border-radius: 5px;
+}
+.timerActions__top {
+  grid-area: header;
+  margin: 0;
+}
+.timerActions__btn, .timerActions__btn--sub, .timerActions__btn--add, .timerActions__btn--pause {
+  border-radius: 5px;
+  border: none;
+  font-size: 30px;
+}
+.timerActions__btn--pause {
+  background-color: #feb019;
+}
+.timerActions__btn--add {
+  background-color: #42bf50;
+}
+.timerActions__btn--sub {
+  background-color: #f25b5b;
 }
 
 .detail__container {
