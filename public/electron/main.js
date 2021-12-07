@@ -8,6 +8,7 @@ const ip = require("ip");
 const isDev = require("electron-is-dev");
 const path = require("path");
 const { checkLive } = require("./api/globalActions/checkLive");
+const { exec } = require("child_process");
 
 require("@electron/remote/main").initialize();
 
@@ -33,10 +34,15 @@ const createWindow = () => {
   appData.mainWindow.webContents.openDevTools();
 };
 
+let mqtt;
+
 // When the app ir running
 app.whenReady().then(() => {
   // Initialise the database
   initDataBase(app);
+
+  // Initialise MQTT
+  mqtt = exec("mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf");
 
   // Declare UDP Port and make globally available
   appData.udpPort = new osc.UDPPort({
@@ -68,9 +74,11 @@ app.whenReady().then(() => {
   });
 });
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+// Kill mqtt when all windows are closed and quit the app
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") app.quit();
+  app.quit();
+});
+
+app.on("will-quit", () => {
+  mqtt.kill();
 });

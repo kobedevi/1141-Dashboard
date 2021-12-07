@@ -13,7 +13,7 @@ const initDataBase = (app) => {
   appData.dataBase.push(
     "/",
     {
-      players: 4,
+      players: 3,
       clients: {
         "Client-00": {
           id: "Client-00",

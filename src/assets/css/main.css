@@ -461,6 +461,8 @@ button:active {
   bottom: 0;
   left: 0;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   margin-top: auto;
   border-top: 1px solid grey;
   background-color: #1f2a40;
@@ -468,6 +470,10 @@ button:active {
   justify-content: center;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 8px;
+}
+.client__footer .ip {
+  margin: 0;
+  margin-bottom: 10px;
 }
 .client__footer .client__item {
   width: 100%;

@@ -46,28 +46,6 @@
     }
   }
 
-  // &__footer {
-  //   display: grid;
-  //   background-color: #1f2a40;
-  //   position: fixed;
-  //   bottom: 0px;
-  //   border-top: 1px solid #222128;
-
-  //   button {
-  //     height: 40px;
-  //     background-color: #5959ef;
-  //     color: white;
-  //     border-radius: 5px;
-  //     border: 1px solid #222128;
-  //     cursor: pointer;
-  //     margin: 5px 10px;
-
-  //     i {
-  //       font-size: 18px;
-  //     }
-  //   }
-  // }
-
   &__item {
     display: flex;
     align-items: center;
@@ -107,6 +85,9 @@
     bottom: 0;
     left: 0;
     width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
 
     margin-top: auto;
 

@@ -7,10 +7,10 @@ export const PlayerToggle = () => {
   const { data } = useData();
 
   const togglePlayers = () => {
-    if (data.players === 4) {
-      ipcRenderer.send("setPlayers", 3);
+    if (data.players === 3) {
+      ipcRenderer.send("setPlayers", 2);
     } else {
-      ipcRenderer.send("setPlayers", 4);
+      ipcRenderer.send("setPlayers", 3);
     }
   };
 

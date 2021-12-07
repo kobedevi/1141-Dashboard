@@ -6,6 +6,8 @@ This is the dashboard for the WOT 1141 project. (Still Work-in-progess)
 
 ```Bash
 yarn install
+
+brew install mosquitto
 ```
 
 ## TODO after install:

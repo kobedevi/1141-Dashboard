@@ -1,6 +1,7 @@
 const appData = require("../../appData");
 const { formatGetClients } = require("../../db/formatFunctions");
 const { sendMessage } = require("../sendMessage");
+const { openCameras } = require("./openCameras");
 
 module.exports = (action) => {
   // Get all the clientsData as an array
@@ -44,6 +45,7 @@ module.exports = (action) => {
 
     case "camera":
       console.log("TODO: Open camera window");
+      openCameras();
       break;
 
     default:
