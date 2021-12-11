@@ -471,10 +471,6 @@ button:active {
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 8px;
 }
-.client__footer .ip {
-  margin: 0;
-  margin-bottom: 10px;
-}
 .client__footer .client__item {
   width: 100%;
   margin: 7px 10px !important;
@@ -876,11 +872,11 @@ button:active {
   padding-left: 10px;
 }
 .onState__state .stateName {
-  width: 100%;
+  width: 60%;
   border-radius: 5px 0 0 5px;
 }
 .onState__state .stateCode {
-  width: 100px;
+  width: 40%;
   border-radius: 0 5px 5px 0;
   border-left: none;
 }

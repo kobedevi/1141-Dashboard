@@ -1,6 +1,7 @@
 export const Select = ({
   design,
   values = [""],
+  titles = [""],
   selected,
   name,
   id,
@@ -21,7 +22,7 @@ export const Select = ({
       <option value=""></option>
       {values.map((item, index) => (
         <option value={item} key={index}>
-          {item}
+          {titles[index]}
         </option>
       ))}
     </select>

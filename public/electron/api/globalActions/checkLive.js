@@ -3,24 +3,33 @@ const ping = require("ping");
 const { sendClients } = require("../../db/dbFunctions");
 
 const checkLive = async () => {
+  const promises = [];
   const clients = appData.dataBase.getData(`/clients`);
+  const clientsArray = Object.values(clients);
 
-  // TODO Promise.all();
-
-  // Await the whole loop before continuing
-  for await (const client of Object.values(clients)) {
-    const res = await ping.promise.probe(client.ipAddress);
-
-    // Update the status in the database
-    if (res.alive) {
-      appData.dataBase.push(`/clients/${client.id}/status`, 1);
-    } else {
-      appData.dataBase.push(`/clients/${client.id}/status`, 0);
-    }
+  // Create a promise for each client and put in in the array
+  for (const client of clientsArray) {
+    promises.push({
+      id: client.id,
+      promise: ping.promise.probe(client.ipAddress),
+    });
   }
 
-  // Send the new data to the render process
-  sendClients();
+  // Execute all promises at once
+  Promise.all(promises.map((client) => client.promise)).then((data) => {
+    // Loop over the results once finished
+    data.forEach((result, index) => {
+      // Update the status in the database
+      if (result.alive) {
+        appData.dataBase.push(`/clients/${clientsArray[index].id}/status`, 1);
+      } else {
+        appData.dataBase.push(`/clients/${clientsArray[index].id}/status`, 0);
+      }
+    });
+
+    // Send the new data to the render process
+    sendClients();
+  });
 };
 
 module.exports = {

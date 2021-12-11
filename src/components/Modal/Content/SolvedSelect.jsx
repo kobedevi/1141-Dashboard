@@ -1,6 +1,7 @@
 import { Select } from "../../Select";
 
 const defaultValues = [0, 1, 100];
+const defaultValueNames = ['Inactive', 'Active', 'Solved']
 
 export const SolvedSelect = ({
   values,
@@ -11,11 +12,13 @@ export const SolvedSelect = ({
   onChange,
 }) => {
   let clientStates = [];
+  let clientStateNames = [];
 
   const idIndex = values.findIndex((x) => x.id === name);
 
   values[idIndex]?.extraStates.forEach((state) => {
     clientStates.push(state.code);
+    clientStateNames.push(state.name);
   });
 
   return (
@@ -23,6 +26,7 @@ export const SolvedSelect = ({
       <Select
         design="stateName"
         values={values.map((client) => client.id)}
+        titles={values.map((client) => client.puzzleName)}
         selected={name}
         name="id"
         arrayId={arrayId}
@@ -32,6 +36,7 @@ export const SolvedSelect = ({
       <Select
         design="stateCode"
         values={[...defaultValues, ...clientStates]}
+        titles={[...defaultValueNames, ...clientStateNames]}
         selected={code}
         name="code"
         arrayId={arrayId}

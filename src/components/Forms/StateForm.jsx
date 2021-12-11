@@ -90,13 +90,33 @@ export const StateForm = ({ onSubmit }) => {
     onSubmit(data);
   };
 
+  // Function to find the name of a state
+  const findStateName = (stateId) => {
+    switch (stateId) {
+      case '0':
+        return 'Inactive'
+      
+      case '1':
+        return 'Active'
+      
+      case '100':
+        return 'Solved'
+    
+      default:
+        const clientExtraStates = clients.clients[idIndex].extraStates
+        const extraStateId = clientExtraStates.findIndex((x) => x.code === parseInt(stateId)) 
+        const stateName = clientExtraStates[extraStateId].name
+        return stateName
+    }
+  }
+
   return (
     <form className="onState__form" onSubmit={handleSubmit}>
       <div className="onState__optionsContainer">
         {/* Loop over every OnState */}
         {Object.entries(data.onState).map((item, index) => (
           <div key={index} className="creation__stateContainer me">
-            <h3>{`On state-${item[0]} change:`}</h3>
+            <h3>{`When ${findStateName(item[0])}:`}</h3>
 
             {/* Loop over every object in this specific onState array */}
             {item[1].map((subItem, index) => (

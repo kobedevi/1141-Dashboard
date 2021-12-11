@@ -8,7 +8,6 @@ const ip = require("ip");
 const isDev = require("electron-is-dev");
 const path = require("path");
 const { checkLive } = require("./api/globalActions/checkLive");
-const { exec } = require("child_process");
 
 require("@electron/remote/main").initialize();
 
@@ -34,15 +33,10 @@ const createWindow = () => {
   appData.mainWindow.webContents.openDevTools();
 };
 
-let mqtt;
-
 // When the app ir running
 app.whenReady().then(() => {
   // Initialise the database
   initDataBase(app);
-
-  // Initialise MQTT
-  mqtt = exec("mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf");
 
   // Declare UDP Port and make globally available
   appData.udpPort = new osc.UDPPort({
@@ -68,17 +62,10 @@ app.whenReady().then(() => {
   checkLive();
 
   app.on("activate", () => {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
-// Kill mqtt when all windows are closed and quit the app
 app.on("window-all-closed", () => {
   app.quit();
-});
-
-app.on("will-quit", () => {
-  mqtt.kill();
 });
