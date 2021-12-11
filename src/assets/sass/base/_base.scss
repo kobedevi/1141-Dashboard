@@ -43,6 +43,7 @@ main {
 }
 
 .interactive__container {
+  height: 100vh;
   display: grid;
   grid-template-rows: 60px 100px auto 80px;
 
@@ -57,6 +58,15 @@ button {
 
   &:active {
     transform: scale(100%);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+
+    &:hover {
+      transform: none;
+      cursor: default;
+    }
   }
 }
 
