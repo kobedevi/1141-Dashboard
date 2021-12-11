@@ -60,7 +60,7 @@ export const DetailHeader = ({ data, noHeader }) => {
           </div>
         </div>
 
-        {defaultHidden ? null : (
+        {!defaultHidden && (
           <Modal onClose={toggleModal}>
             <div className="creation">
               <DefaultClientForm closeModal={toggleModal} />

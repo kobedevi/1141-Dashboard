@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import { useFetch } from '../../core/hooks/useFetch';
-import { LightNav } from './LightNav';
-import { LightPanel } from './LightPanel';
-import { Spinner } from './Spinner';
+import { useFetch } from "../../core/hooks/useFetch";
+import { LightNav } from "./LightNav";
+import { LightPanel } from "./LightPanel";
+import { Spinner } from "./Spinner";
 
-export const apiBaseUrl = 'http://localhost:3001/api'; // TODO: Get IP address from DataProvider
-export const names = ['Jane', 'Mary'];
+export const apiBaseUrl = "http://localhost:3001/api"; // TODO: Get IP address from DataProvider
+export const names = ["Jane", "Mary"];
 
 export const LightController = ({ ip }) => {
   const apiBaseUrl = `${ip}:3001/api`;
@@ -25,7 +25,7 @@ export const LightController = ({ ip }) => {
 
   if (error) {
     return (
-      <p className="alert alert--error" style={{ marginTop: '5rem' }}>
+      <p className="alert alert--error">
         Failed to fetch data. Error: {error.message}
       </p>
     );

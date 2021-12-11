@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export const useFetch = (url, options) => {
   const [response, setResponse] = useState(null);
@@ -11,12 +11,15 @@ export const useFetch = (url, options) => {
 
     const fetchData = async () => {
       setLoading(true);
-      console.log(url)
+      // console.log(url);
 
       try {
         const res = await fetch(url, options);
         const json = await res.json();
-        if (!signal.aborted) setResponse(json);
+        if (!signal.aborted) {
+          setResponse(json);
+          setError(null);
+        }
       } catch (error) {
         if (!signal.aborted) setError(error);
       } finally {

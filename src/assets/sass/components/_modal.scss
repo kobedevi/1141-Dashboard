@@ -73,6 +73,28 @@
   }
 }
 
+.lightIp {
+  &__form {
+    display: grid;
+    grid-template-rows: 40px 40px;
+    row-gap: 10px;
+
+    button {
+      height: 40px;
+      border-radius: 5px;
+      border: 1px solid #222128;
+      background-color: #5959ef;
+    }
+  }
+
+  &__input {
+    border-radius: 5px;
+    border: none;
+    padding-left: 10px;
+    color: black;
+  }
+}
+
 .creation {
   width: 450px;
 

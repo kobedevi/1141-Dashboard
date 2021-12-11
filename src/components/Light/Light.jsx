@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import useData from '../../core/hooks/useData';
-import { ChangeIpModal } from './ChangeIpModal';
-import { LightController } from './LightController';
+import useData from "../../core/hooks/useData";
+import { ChangeIpModal } from "./ChangeIpModal";
+import { LightController } from "./LightController";
 
 export const Light = () => {
   const {
@@ -11,15 +11,24 @@ export const Light = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div>
-      <div className="light-config">
-        <button onClick={() => setShowModal(true)}>
-          <i class="bi bi-gear-fill"></i>
-        </button>
-        {showModal && <ChangeIpModal closeModal={() => setShowModal(false)} />}
+    <>
+      <div className="detail__header">
+        <h1>LightsController</h1>
+        <div>
+          <button onClick={() => setShowModal(true)}>
+            <i className="bi bi-gear-fill"></i>
+          </button>
+        </div>
       </div>
+      <hr />
 
-      <LightController ip={lightIP} />
-    </div>
+      {showModal && <ChangeIpModal closeModal={() => setShowModal(false)} />}
+
+      {lightIP !== "0.0.0.0" ? (
+        <LightController ip={lightIP} />
+      ) : (
+        <p className="alert alert--error">Please change the IP address first</p>
+      )}
+    </>
   );
 };

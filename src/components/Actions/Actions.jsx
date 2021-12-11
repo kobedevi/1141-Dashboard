@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { ActionButton } from './ActionButton';
-import { TimerActions } from './Timeractions';
+import { Link } from "react-router-dom";
+import { ActionButton } from "./ActionButton";
+import { TimerActions } from "./Timeractions";
 
 export const Actions = () => {
   return (
@@ -11,11 +11,9 @@ export const Actions = () => {
       <ActionButton name="camera" noModal>
         <i className="bi bi-camera-video"></i>
       </ActionButton>
-      <button className="actions__btn actions__btn--light">
-        <Link to="/light">
-          <i className="bi bi-lamp"></i>
-        </Link>
-      </button>
+      <Link to="/light" className="actions__btn actions__btn--light">
+        <i className="bi bi-lamp"></i>
+      </Link>
     </div>
   );
 };
