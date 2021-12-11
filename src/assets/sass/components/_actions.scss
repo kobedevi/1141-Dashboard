@@ -1,0 +1,94 @@
+.actions {
+  &__container {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 100px 100px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__btn {
+    height: 90%;
+    width: 100%;
+
+    font-size: 30px;
+
+    border-radius: 5px;
+    border: 1px solid #222128;
+
+    cursor: pointer;
+
+    &--start {
+      background-color: #42bf50;
+    }
+    &--stop {
+      background-color: #f25b5b;
+    }
+    &--pause {
+      background-color: #feb019;
+    }
+    &--reset {
+      background-color: #f25b5b;
+    }
+    &--camera {
+      background-color: #5959ef;
+      color: white;
+      i {
+        font-size: 50px;
+      }
+    }
+    &--light {
+      background-color: #ffed48;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        font-size: 50px;
+        color: #222128;
+      }
+
+      &:hover {
+        transform: scale(102%);
+        cursor: pointer;
+      }
+
+      &:active {
+        transform: scale(100%);
+      }
+    }
+  }
+}
+
+.timerActions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "header header";
+
+  gap: 0 10px;
+  height: 90%;
+  border-radius: 5px;
+
+  &__top {
+    grid-area: header;
+    margin: 0;
+  }
+
+  &__btn {
+    border-radius: 5px;
+    border: none;
+    font-size: 30px;
+
+    &--pause {
+      @extend .timerActions__btn;
+      background-color: #feb019;
+    }
+    &--add {
+      @extend .timerActions__btn;
+      background-color: #42bf50;
+    }
+    &--sub {
+      @extend .timerActions__btn;
+      background-color: #f25b5b;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.chat {
+  &__container {
+    display: grid;
+    grid-template-columns: 85% 15%;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 25px;
+
+    input {
+      padding: 0;
+      padding-left: 10px;
+      height: 60px;
+      border-radius: 5px 0 0 5px;
+      border: 1px solid #222128;
+      color: black;
+    }
+
+    button {
+      height: 64px;
+      border-radius: 0 5px 5px 0;
+      border: 1px solid #222128;
+      border-left: 0;
+
+      background-color: #1f2a40;
+
+      cursor: pointer;
+      font-size: 25px;
+
+      &:active {
+        transform: scale(98%);
+      }
+    }
+  }
+}
+
+.tip {
+  &__title {
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 85% 15%;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 20px;
+
+    select {
+      padding: 0;
+      padding-left: 10px;
+      height: 45px;
+      border-radius: 5px 0 0 5px;
+      border: 1px solid #222128;
+      color: black;
+
+      font-size: 20px;
+    }
+
+    button {
+      height: 45px;
+      border-radius: 0 5px 5px 0;
+      border: 1px solid #222128;
+      border-left: 0;
+
+      background-color: #5959ef;
+
+      cursor: pointer;
+      font-size: 25px;
+
+      &:active {
+        transform: scale(98%);
+      }
+    }
+  }
+}

@@ -19,5 +19,3 @@ export const StateButton = ({ stateData, clientData }) => {
     </div>
   );
 };
-
-// ${state === clientState && "state"}

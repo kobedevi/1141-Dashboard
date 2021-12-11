@@ -1,0 +1,55 @@
+.progress {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__bar {
+    height: 30px;
+    width: 100%;
+
+    overflow: hidden;
+    border: 1px solid #222128;
+    border-radius: 10px;
+
+    background-color: white;
+  }
+
+  &__fill {
+    background-color: #5959ef;
+    height: 100%;
+  }
+
+  &__timer {
+    margin: 0;
+    text-align: center;
+  }
+
+  &__button {
+    height: 30px;
+    background-color: transparent;
+    color: white;
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 25px;
+    padding: 0;
+
+    min-width: 50px;
+
+    p {
+      margin: 0;
+
+      &:hover {
+        color: #cbcbcb;
+
+        i {
+          color: #cbcbcb;
+        }
+      }
+    }
+  }
+}
