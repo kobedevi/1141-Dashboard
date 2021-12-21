@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -15,10 +15,17 @@ function App() {
     <ElectronProvider>
       <DataProvider>
         <Router>
-          <main>
-            <ClientSidebar />
-            <Dashboard />
-          </main>
+          <Switch>
+            <Route path="/Cameras">
+              <img src="https://picsum.photos/200" alt="" />
+            </Route>
+            <Route path="/">
+              <main>
+                <ClientSidebar />
+                <Dashboard />
+              </main>
+            </Route>
+          </Switch>
         </Router>
       </DataProvider>
     </ElectronProvider>

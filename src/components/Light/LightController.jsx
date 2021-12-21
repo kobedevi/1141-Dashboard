@@ -10,6 +10,7 @@ export const names = ["Jane", "Mary"];
 export const LightController = ({ ip }) => {
   const apiBaseUrl = `http://${ip}:3001/api`;
 
+
   const [active, setActive] = useState(names[0]);
   const {
     data: paths,
@@ -41,7 +42,9 @@ export const LightController = ({ ip }) => {
   return (
     <section className="light">
       <LightNav active={active} setActive={setActive} />
+
       <LightPanel active={active} url={apiBaseUrl} initialPoints={points} onSave={updatePath} />
+
     </section>
   );
 };
