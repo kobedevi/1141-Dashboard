@@ -15,14 +15,14 @@ const sendTip = (tip) => {
   if (data.ipAddress && data.port) {
     appData.udpPort.send(
       {
-        address: "/tip",
+        address: "/servermessage",
         args: {
           type: "s",
           value: tip,
         },
       },
-      display.ipAddress,
-      display.port
+      data.ipAddress,
+      data.port
     );
 
     // Send the tip to the renderer process so it can be set as placeholder
