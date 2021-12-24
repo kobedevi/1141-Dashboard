@@ -38,7 +38,6 @@ const deleteCamera = (camera) => {
   // Send the updated data
   sendClients();
 };
-
 const setPlayers = (players) => {
   appData.dataBase.push(`/players`, players);
 

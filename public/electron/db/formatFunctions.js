@@ -56,12 +56,12 @@ const formatClientForDB = (data) => {
 
 // Manipulate data before storing in the database
 const formatCameraForDB = (data) => {
-
   // Return formatted data
   return {
     ...data,
     id: `Camera-${data.id}`,
     port: data.port !== "" ? parseInt(data.port) : 0,
+
   };
 };
 

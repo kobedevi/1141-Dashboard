@@ -1,11 +1,6 @@
 const { dialog } = require("electron");
 const appData = require("../appData");
 
-const display = {
-  ipAddress: "192.168.0.186",
-  port: 57112,
-};
-
 // Send message to a client
 const sendTip = (tip) => {
   // Get data from database
@@ -15,14 +10,15 @@ const sendTip = (tip) => {
   if (data.ipAddress && data.port) {
     appData.udpPort.send(
       {
-        address: "/tip",
+        address: "/servermessage",
         args: {
           type: "s",
           value: tip,
         },
       },
-      display.ipAddress,
-      display.port
+
+      data.ipAddress,
+      data.port
     );
 
     // Send the tip to the renderer process so it can be set as placeholder
