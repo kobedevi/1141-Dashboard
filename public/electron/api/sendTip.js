@@ -1,11 +1,6 @@
 const { dialog } = require("electron");
 const appData = require("../appData");
 
-const display = {
-  ipAddress: "192.168.0.186",
-  port: 57112,
-};
-
 // Send message to a client
 const sendTip = (tip) => {
   // Get data from database
@@ -21,6 +16,7 @@ const sendTip = (tip) => {
           value: tip,
         },
       },
+
       data.ipAddress,
       data.port
     );

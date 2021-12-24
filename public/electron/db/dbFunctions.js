@@ -1,4 +1,4 @@
-const { formatGetClients, formatClientForDB } = require("./formatFunctions");
+const { formatGetClients, formatClientForDB, formatCameraForDB } = require("./formatFunctions");
 const appData = require("../appData");
 
 // Send client data to render process
@@ -19,6 +19,25 @@ const saveClient = (data) => {
   sendClients();
 };
 
+// Save new camera-data
+const saveCamera = (data) => {
+  appData.dataBase.push(
+    `/cameras/Camera-${data.id}`,
+    formatCameraForDB(data),
+    true
+  );
+
+  // Send the updated data
+  sendClients();
+};
+
+// Delete camera
+const deleteCamera = (camera) => {
+  appData.dataBase.delete(`/cameras/${camera}`);
+
+  // Send the updated data
+  sendClients();
+};
 const setPlayers = (players) => {
   appData.dataBase.push(`/players`, players);
 
@@ -69,7 +88,9 @@ const saveLightIp = (ip) => {
 module.exports = {
   sendClients,
   saveClient,
+  saveCamera,
   deleteClient,
+  deleteCamera,
   saveState,
   saveOnState,
   setPlayers,

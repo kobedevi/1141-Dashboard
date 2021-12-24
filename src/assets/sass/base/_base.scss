@@ -11,6 +11,7 @@ main {
   display: grid;
   grid-template-columns: 170px auto;
   background-color: #13192b;
+  min-height:100vh;
 }
 
 .green {

@@ -10,7 +10,6 @@ export const names = ["Jane", "Mary"];
 export const LightController = ({ ip }) => {
   const apiBaseUrl = `http://${ip}:3001/api`;
 
-
   const [active, setActive] = useState(names[0]);
   const {
     data: paths,

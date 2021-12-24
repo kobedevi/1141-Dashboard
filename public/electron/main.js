@@ -33,6 +33,7 @@ const createWindow = () => {
   appData.mainWindow.webContents.openDevTools();
 };
 
+// app.enableSandbox();
 // When the app ir running
 app.whenReady().then(() => {
   // Initialise the database

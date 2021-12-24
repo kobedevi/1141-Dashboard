@@ -34,4 +34,4 @@ const checkLive = async () => {
 
 module.exports = {
   checkLive,
-};
+}
