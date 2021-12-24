@@ -5,6 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import { ElectronProvider } from "./core/context/electron";
 import { DataProvider } from "./core/context/data";
 import { ClientSidebar } from "./components/Sidebar/ClientSidebar";
+import { CamerasOverview } from "./components/Cameras/CamerasOverview";
 
 // TODO Merge timer functions
 // TODO Merge Camera function
@@ -17,7 +18,7 @@ function App() {
         <Router>
           <Switch>
             <Route path="/Cameras">
-              <img src="https://picsum.photos/200" alt="" />
+              <CamerasOverview />
             </Route>
             <Route path="/">
               <main>

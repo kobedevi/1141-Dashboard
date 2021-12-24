@@ -1167,6 +1167,47 @@ button:disabled:hover {
   left: 1.5em;
 }
 
+.cameras__overview {
+  min-height: 100vh;
+  padding: 20px;
+  margin: 0;
+  background-color: #13192b;
+}
+
+.cameras__overview .cameracontainer {
+  width: calc(50% - 10px);
+  background-color: #1f2a40;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction:column;
+}
+
+.cameras__overview .detail__container {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.cameras__overview iframe {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 5px;
+}
+
+.iframeLoader {
+  display: flex;
+  background:url(../images/loading-buffering.gif) center center no-repeat;
+  background-size: 2rem;
+  min-height: 400px;
+}
+
 @-webkit-keyframes load1 {
   0%, 80%, 100% {
     box-shadow: 0 0;

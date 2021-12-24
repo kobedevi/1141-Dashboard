@@ -11,11 +11,13 @@ const formatGetClients = () => {
 
   // Change data to an array of objects
   const clients = Object.values(data.clients);
+  const cameras = Object.values(data.cameras);
 
   // Sort alphabetically and send
   return {
     ...data,
     clients: clients.sort(sortDataById),
+    cameras: cameras.sort(sortDataById),
   };
 };
 
@@ -52,7 +54,19 @@ const formatClientForDB = (data) => {
   };
 };
 
+// Manipulate data before storing in the database
+const formatCameraForDB = (data) => {
+
+  // Return formatted data
+  return {
+    ...data,
+    id: `Camera-${data.id}`,
+    port: data.port !== "" ? parseInt(data.port) : 0,
+  };
+};
+
 module.exports = {
   formatGetClients,
   formatClientForDB,
+  formatCameraForDB,
 };

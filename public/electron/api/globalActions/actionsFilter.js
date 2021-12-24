@@ -44,7 +44,7 @@ module.exports = (action) => {
       break;
 
     case "camera":
-      console.log("TODO: Open camera window");
+      console.log("Open camera window");
       openCameras();
       break;
 

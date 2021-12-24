@@ -5,7 +5,9 @@
 const { ipcMain } = require("electron");
 const {
   saveClient,
+  saveCamera,
   deleteClient,
+  deleteCamera,
   saveOnState,
   setPlayers,
   getLightIp,
@@ -13,7 +15,7 @@ const {
 } = require("../db/dbFunctions");
 const { formatGetClients } = require("../db/formatFunctions");
 const actionsFilter = require("./globalActions/actionsFilter");
-const { checkLive } = require("./globalActions/checkLive");
+const { checkLive, checkLiveCameras } = require("./globalActions/checkLive");
 const { sendMessage } = require("./sendMessage");
 const { sendTip } = require("./sendTip");
 
@@ -28,7 +30,14 @@ module.exports = () => {
     // Check the live status of all clients after creating a new client
     checkLive();
   });
+  ipcMain.on("saveCamera", (e, args) => {
+    saveCamera(args);
+    // console.log('saved camera');
+    // Check the live status of all clients after creating a new client
+    // checkLiveCameras();
+  });
   ipcMain.on("deleteClient", (e, args) => deleteClient(args));
+  ipcMain.on("deleteCamera", (e, args) => deleteCamera(args));
   ipcMain.on("saveOnState", (e, args) => saveOnState(args));
   ipcMain.on("sendTip", (e, args) => sendTip(args));
   ipcMain.on("checkLive", (e, args) => checkLive());
