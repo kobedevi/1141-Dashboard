@@ -9,9 +9,21 @@ export const CamerasOverview = () => {
   const { data } = useData();
 
   const [visible, setVisible] = useState(false);
+  const [refreshVisible, setRefreshVisible] = useState(false);
 
   const toggleVisible = () => {
     setVisible(!visible);
+    openRefresh();
+  };
+
+  const toggleRefreshVisible = () => {
+    setRefreshVisible(!refreshVisible);
+  };
+
+  const openRefresh = () => {
+    if(refreshVisible === false && visible === true) {
+      toggleRefreshVisible();
+    };
   };
 
   return (
@@ -39,6 +51,18 @@ export const CamerasOverview = () => {
             <Creation closeModal={toggleVisible} />
           </Modal>
         )}
+           
+        {refreshVisible && (
+          <Modal onClose={toggleRefreshVisible}>
+            <div className="confirmation">
+              <h2>Confirm</h2>
+              <hr />
+              <p>Please close the camera window and reopen it to see the changes</p>
+              <button onClick={toggleRefreshVisible}>Confirm</button>
+            </div>
+          </Modal>
+        )}
+
     </div>
   );
   
