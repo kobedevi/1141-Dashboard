@@ -5,7 +5,7 @@ import { LightNav } from "./LightNav";
 import { LightPanel } from "./LightPanel";
 import { Spinner } from "./Spinner";
 
-export const names = ["Jane", "Mary"];
+export const names = ["Jane", "Mary", "John"];
 
 export const LightController = ({ ip }) => {
   const apiBaseUrl = `http://${ip}:3001/api`;
@@ -42,8 +42,12 @@ export const LightController = ({ ip }) => {
     <section className="light">
       <LightNav active={active} setActive={setActive} />
 
-      <LightPanel active={active} url={apiBaseUrl} initialPoints={points} onSave={updatePath} />
-
+      <LightPanel
+        active={active}
+        url={apiBaseUrl}
+        initialPoints={points}
+        onSave={updatePath}
+      />
     </section>
   );
 };

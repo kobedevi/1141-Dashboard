@@ -13,7 +13,7 @@ export const Light = () => {
   return (
     <>
       <div className="detail__header">
-        <h1>LightsController</h1>
+        <h1>Lights Controller</h1>
         <div>
           <button onClick={() => setShowModal(true)}>
             <i className="bi bi-gear-fill"></i>
