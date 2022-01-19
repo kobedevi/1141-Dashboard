@@ -30,7 +30,7 @@ const createWindow = () => {
   );
 
   // Open devTools
-  appData.mainWindow.webContents.openDevTools();
+  // appData.mainWindow.webContents.openDevTools();
 };
 
 // app.enableSandbox();
