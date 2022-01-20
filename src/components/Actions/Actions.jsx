@@ -8,16 +8,16 @@ export const Actions = () => {
       <TimerActions />
       <ActionButton name="start">Start</ActionButton>
       <ActionButton name="reset">Reset</ActionButton>
-      {/* <ActionButton name="camera" noModal>
+      <ActionButton name="camera" noModal>
         <i className="bi bi-camera-video"></i>
       </ActionButton>
-       */}
-      <button
+
+      {/* <button
         className={`actions__btn actions__btn--camera`}
-        onClick={() => window.open('/Cameras')}
+        onClick={() => window.open("/")}
       >
         <i className="bi bi-camera-video"></i>
-      </button>
+      </button> */}
       <Link to="/light" className="actions__btn actions__btn--light">
         <i className="bi bi-lamp"></i>
       </Link>

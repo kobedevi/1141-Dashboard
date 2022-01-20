@@ -22,15 +22,8 @@ const initDataBase = (app) => {
           status: 1,
         },
       },
-      cameras: {
-        "Camera-00": {
-          id: "Camera-00",
-          src: "192.168.0.248",
-          port: 5000,
-          cameraName: "Testercam",
-        }
-      },
-      lightIP: '0.0.0.0'
+      cameras: {},
+      lightIP: "0.0.0.0",
     },
     false
   );

@@ -2,9 +2,10 @@ const { BrowserWindow } = require("electron");
 
 const electronIsDev = require("electron-is-dev");
 const path = require("path");
+const appData = require("../../appData");
 
 const openCameras = () => {
-  const win = new BrowserWindow({
+  appData.secondWindow = new BrowserWindow({
     width: 1024,
     height: 768,
     webPreferences: {
@@ -13,11 +14,11 @@ const openCameras = () => {
     },
   });
 
-  // Load file
-  win.loadURL(
+  // Load cameras url
+  appData.secondWindow.loadURL(
     electronIsDev
-      ? "http://localhost:3000/Cameras"
-      : `file://${path.join(__dirname, "../../build/index.html")}`
+      ? "http://localhost:3000#Cameras"
+      : `file://${path.join(__dirname, "../../../../build/index.html#Cameras")}`
   );
 };
 

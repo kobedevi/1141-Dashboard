@@ -12,8 +12,9 @@ const {
   setPlayers,
   getLightIp,
   saveLightIp,
+  sendCameras,
 } = require("../db/dbFunctions");
-const { formatGetClients } = require("../db/formatFunctions");
+const { formatGetClients, formatGetCameras } = require("../db/formatFunctions");
 const actionsFilter = require("./globalActions/actionsFilter");
 
 const { checkLive, checkLiveCameras } = require("./globalActions/checkLive");
@@ -44,7 +45,11 @@ module.exports = () => {
   ipcMain.on("sendTip", (e, args) => sendTip(args));
   ipcMain.on("checkLive", (e, args) => checkLive());
   ipcMain.on("setPlayers", (e, args) => setPlayers(args));
-  ipcMain.on("endGame", (e, args) => console.log("game ended"));
-  ipcMain.on("getLightIp", (e, args) => e.returnValue = getLightIp())
-  ipcMain.on("saveLightIp", (e, args) => { saveLightIp(args) })
+  ipcMain.on("getLightIp", (e, args) => (e.returnValue = getLightIp()));
+  ipcMain.on("saveLightIp", (e, args) => {
+    saveLightIp(args);
+  });
+  ipcMain.on("getCameras", (e, arg) => {
+    e.returnValue = formatGetCameras();
+  });
 };

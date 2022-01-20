@@ -12,7 +12,7 @@ export const StateForm = ({ onSubmit }) => {
 
   // Find the index of the current client in the clients array
   const idIndex = clients.clients.findIndex(
-    (x) => x.id === window.location.pathname.substr(1)
+    (x) => x.id === window.location.hash.substring(2)
   );
 
   // Fetch previousdata
@@ -24,7 +24,7 @@ export const StateForm = ({ onSubmit }) => {
   const [data, setData] = useState({
     ...initialData,
     ...previousData,
-    currentClient: window.location.pathname,
+    currentClient: `/${window.location.hash.substring(2)}`,
   });
 
   // Add option to selected state
@@ -93,61 +93,67 @@ export const StateForm = ({ onSubmit }) => {
   // Function to find the name of a state
   const findStateName = (stateId) => {
     switch (stateId) {
-      case '0':
-        return 'Inactive'
-      
-      case '1':
-        return 'Active'
-      
-      case '100':
-        return 'Solved'
-    
+      case "0":
+        return "Inactive";
+
+      case "1":
+        return "Active";
+
+      case "100":
+        return "Solved";
+
       default:
-        const clientExtraStates = clients.clients[idIndex].extraStates
-        const extraStateId = clientExtraStates.findIndex((x) => x.code === parseInt(stateId)) 
-        const stateName = clientExtraStates[extraStateId].name
-        return stateName
+        const clientExtraStates = clients.clients[idIndex].extraStates;
+        const extraStateId = clientExtraStates.findIndex(
+          (x) => x.code === parseInt(stateId)
+        );
+        const stateName = clientExtraStates[extraStateId].name;
+        return stateName;
     }
-  }
+  };
 
   return (
-    <form className="onState__form" onSubmit={handleSubmit}>
-      <div className="onState__optionsContainer">
-        {/* Loop over every OnState */}
-        {Object.entries(data.onState).map((item, index) => (
-          <div key={index} className="creation__stateContainer me">
-            <h3>{`When ${findStateName(item[0])}:`}</h3>
+    <>
+      <h2>Onstate logic</h2>
+      <hr />
+      <form className="onState__form" onSubmit={handleSubmit}>
+        <div className="onState__optionsContainer">
+          {/* Loop over every OnState */}
+          {Object.entries(data.onState).map((item, index) => (
+            <div key={index} className="creation__stateContainer me">
+              <h3>{`When ${findStateName(item[0])}:`}</h3>
 
-            {/* Loop over every object in this specific onState array */}
-            {item[1].map((subItem, index) => (
-              <SolvedSelect
-                key={index}
-                values={clients.clients}
-                name={subItem.id}
-                code={subItem.code}
-                onChange={handleChange}
-                arrayId={index}
-                stateId={item[0]}
-              />
-            ))}
-            <button data-stateid={item[0]} onClick={addOption}>
-              <i data-stateid={item[0]} className="bi bi-plus-lg"></i>
-            </button>
-
-            {/* Only show button when there are extra options in the array */}
-            {item[1].length !== 0 && (
-              <button
-                data-stateid={item[0]}
-                onClick={removeOption}
-                className="redbg ml"
-              >
-                <i data-stateid={item[0]} className="bi bi-dash"></i>
+              {/* Loop over every object in this specific onState array */}
+              {item[1].map((subItem, index) => (
+                <SolvedSelect
+                  key={index}
+                  values={clients.clients}
+                  name={subItem.id}
+                  code={subItem.code}
+                  onChange={handleChange}
+                  arrayId={index}
+                  stateId={item[0]}
+                />
+              ))}
+              <button data-stateid={item[0]} onClick={addOption}>
+                <i data-stateid={item[0]} className="bi bi-plus-lg"></i>
               </button>
-            )}
-          </div>
-        ))}
-      </div>
-      <button type="submit">Save</button>
-    </form>
+
+              {/* Only show button when there are extra options in the array */}
+              {item[1].length !== 0 && (
+                <button
+                  data-stateid={item[0]}
+                  onClick={removeOption}
+                  className="redbg ml"
+                >
+                  <i data-stateid={item[0]} className="bi bi-dash"></i>
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+        <button type="submit">Save</button>
+      </form>
+    </>
   );
 };
